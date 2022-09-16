@@ -1,11 +1,13 @@
 import { FunctionComponent } from "react";
-import SectionTitle from "../../components/SectionTitle";
+import SectionTitle from "./SectionTitle";
 
-const MainSection:FunctionComponent<{children:JSX.Element}> = ({children}) => {
+type SectionType = 'EDITOR' | 'PREVIEW';
+
+const MainSection:FunctionComponent<{children:JSX.Element, section:SectionType}> = ({children, section}) => {
 
     return (
         <>
-            <SectionTitle/>
+            <SectionTitle title={section==='EDITOR'? 'MARKDOWN': 'PREVIEW'}/>
             {children}
         </>
     )

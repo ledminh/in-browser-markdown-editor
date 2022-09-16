@@ -23,12 +23,14 @@ const Home: NextPage = () => {
         </aside> */}
         <main>
           <Panel />
-          <MainSection>
+          <MainSection
+              section="EDITOR"
+            >
             <span>Markdown</span>
           </MainSection>
-          <MainSection>
+          {/* <MainSection>
             <span>Preview</span>
-          </MainSection>
+          </MainSection> */}
         </main>
       </div>
     </>

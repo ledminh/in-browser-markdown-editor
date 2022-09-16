@@ -1,0 +1,22 @@
+@use '../../styles/base';
+
+.sectionTitle {
+    background-color: base.$color9;
+
+    display: flex;
+    flex-flow: row nowrap;
+    
+    justify-content: space-between;
+    align-items: center;
+
+    height: 42px;
+}
+
+.title {
+    color: base.$color6;
+    margin-left: 16px;
+}
+
+.previewEditorSwitch {
+    margin-right: 16px;
+}
