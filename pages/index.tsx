@@ -16,11 +16,11 @@ const Home: NextPage = () => {
         <title>Frontend Mentor | In-browser markdown editor</title>
       </Head>
       <div className={styles.container}>
-        <aside className={styles.aside}>
+        {/* <aside className={styles.aside}>
           <SideMenu/>
-        </aside>
+        </aside> */}
         <main>
-          {/* <Panel /> */}
+          <Panel />
         </main>
       </div>
     </>
