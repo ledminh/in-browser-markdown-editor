@@ -21,6 +21,7 @@ h1 {
 
 h2 {
   font-size: 0.875rem;
+  font-weight: normal;
   letter-spacing: 2px;
 }
 
@@ -29,6 +30,14 @@ a {
   text-decoration: none;
 }
 
+
+button {
+  background-color: #E46643;
+  border: none;
+  color: #FFFFFF;
+  height: 40px;
+  border-radius: 4px;
+}
 
 
 
