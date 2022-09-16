@@ -25,7 +25,7 @@ const Panel:FunctionComponent = () => {
                         alt="Document Icon"
                     />
                 </div>
-                <span>welcome.md</span>
+                <h2><span>welcome.md</span></h2>
             </div>
             <button className={styles.recycleBin}>
                 <Image 

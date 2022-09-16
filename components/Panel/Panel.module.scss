@@ -2,4 +2,46 @@
 
 .panel {
     background-color: base.$color3;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menuImage {
+    height: 56px;
+    width: 56px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: base.$color4;
+}
+
+.fileName {
+    margin-right: auto;
+    margin-left: 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+
+    color: base.$color10;
+}
+
+.recycleBin {
+    background: transparent;
+    margin-right: 24px;
+}
+
+.save {
+    width: 40px;
+    margin-right: .5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
