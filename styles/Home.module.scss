@@ -1,0 +1,17 @@
+@use 'base';
+
+.container {
+  border: 3px solid red;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+
+.aside {
+  width: 250px;
+  height: 100%;
+  padding: 0 1.5rem;
+  background-color: base.$color2;
+
+}
