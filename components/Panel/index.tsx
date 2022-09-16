@@ -13,4 +13,7 @@ const Panel:FunctionComponent = () => {
             <div>Save</div>
         </div>
     )
+
 }
+
+export default Panel;

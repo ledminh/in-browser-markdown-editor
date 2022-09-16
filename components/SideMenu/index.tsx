@@ -1,11 +1,18 @@
 import { FunctionComponent } from "react"
 
+import styles from './SideMenu.module.scss';
+
+
 const SideMenu:FunctionComponent = () => {
 
     return (
         <>
-            <h1>MARKDOWN</h1>
-            <h2>MY DOCUMENTS</h2>
+            <div className={styles.title}>
+                <span>MARKDOWN</span>
+            </div>
+            <h2 className={styles.myDocument}>
+                MY DOCUMENTS
+            </h2>
             <button>+ New Document</button>
             <div>
                 <div>IM</div>

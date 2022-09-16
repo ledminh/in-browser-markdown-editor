@@ -1,0 +1,19 @@
+@use '../../styles/base';
+
+.title {
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+
+    span {
+        font-family: 'Commissioner', sans-serif;
+        font-size: 0.9375rem;
+        font-weight: 700;
+        letter-spacing: 4px;
+    }
+}
+
+.myDocument {
+    color: base.$color6;
+}
