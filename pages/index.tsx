@@ -6,6 +6,8 @@ import favicon from '../assets/favicon-32x32.png';
 import SideMenu from '../components/SideMenu';
 import Panel from '../components/Panel';
 
+import MainSection from '../layouts/MainSection';
+
 const Home: NextPage = () => {
   return (
     <>
@@ -16,11 +18,17 @@ const Home: NextPage = () => {
         <title>Frontend Mentor | In-browser markdown editor</title>
       </Head>
       <div className={styles.container}>
-        {/* <aside className={styles.aside}>
+        <aside className={styles.aside}>
           <SideMenu/>
-        </aside> */}
+        </aside>
         <main>
-          <Panel />
+          {/* <Panel />
+          <MainSection>
+            <span>Markdown</span>
+          </MainSection>
+          <MainSection>
+            <span>Preview</span>
+          </MainSection> */}
         </main>
       </div>
     </>
