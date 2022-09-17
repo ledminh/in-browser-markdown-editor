@@ -14,7 +14,7 @@ const SectionTitle:FunctionComponent<{section:SectionType}> = ({section}) => {
     return(
         <div className={styles.sectionTitle}>
             <div className={styles.title}><h2>{section === 'EDITOR'? 'MARKDOWN' : 'PREVIEW'}</h2></div>
-            <div className={styles.previewEditorSwitch}>
+            <button className={styles.previewEditorSwitch}>
                 {
                     section === 'EDITOR'?
                     <Image
@@ -27,7 +27,7 @@ const SectionTitle:FunctionComponent<{section:SectionType}> = ({section}) => {
                         alt="hide preview icon"
                     />
                 }
-            </div>
+            </button>
         </div>
     )
 }
