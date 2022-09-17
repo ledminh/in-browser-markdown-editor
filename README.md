@@ -95,6 +95,11 @@ To see how you can add code snippets, see below:
   export default TextArea;
 ```
 
+```ts
+  import Markdown from "marked-react";
+  <Markdown>{dataJSON[1].content}</Markdown>
+```
+
 ```html
 <h1>Some HTML code I'm proud of</h1>
 ```

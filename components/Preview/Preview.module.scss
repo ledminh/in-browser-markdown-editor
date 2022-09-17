@@ -8,6 +8,8 @@
         font-size: 14px;
         font-weight: 400;
         line-height: 24px;
+
+        color: base.$color6;
         
     }    
     
@@ -72,6 +74,8 @@
         
         padding: 24px;
 
+        color: base.$color4;
+
         p {
             font-weight: bold;
             margin: 0;
@@ -83,5 +87,7 @@
         font-size: inherit;
         font-weight: inherit;
         border-bottom: 1px solid black;
+
+
     }
 }
