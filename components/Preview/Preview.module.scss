@@ -52,6 +52,7 @@
 
     h6 {
         font-size: 0.875rem;
+        color: base.$color11;
     }
 
     ol,
@@ -89,5 +90,17 @@
         border-bottom: 1px solid black;
 
 
+    }
+
+    code {
+        color: base.$color4;
+    }
+
+    pre {
+        background-color: base.$color9;
+        border-radius: 4px;
+        padding: 24px;
+
+        font-family: 'Roboto Mono', serif;
     }
 }
