@@ -18,6 +18,13 @@
     align-items: center;
     
     background-color: base.$color4;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: lighten(base.$color4, 5%);
+    }
+
 }
 
 .fileName {
@@ -35,6 +42,16 @@
 .recycleBin {
     background: transparent;
     margin-right: 24px;
+
+    cursor: pointer;
+
+    &:hover {
+        background: transparent;
+    }
+
+    &:hover img {
+        opacity: .5;
+    }
 }
 
 .save {
