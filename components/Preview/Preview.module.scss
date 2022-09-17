@@ -1,0 +1,87 @@
+@use '../../styles/base';
+
+.preview {
+    * {
+        margin-bottom: 1.375rem;
+        
+        font-family: 'Roboto Slab', serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+        
+    }    
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: base.$color4;
+        margin-bottom: 1.375rem;
+        font-weight: bold;
+
+    }
+
+    h1 {
+        font-size: 2rem;
+        letter-spacing: normal;
+        line-height: 2.6375rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 300;
+
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        line-height: 31.65px;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    h5 {
+        font-size: 1rem;
+    }
+
+    h6 {
+        font-size: 0.875rem;
+    }
+
+    ol,
+    ul {
+        padding-left: 44px;
+
+        li {
+            margin-bottom: 4px;
+
+            padding-left: 8.82px;
+        }
+    }
+
+    blockquote {
+        background-color: base.$color9;
+        border-radius: 4px;
+        
+        border-left: 4px solid base.$color11;
+
+        
+        padding: 24px;
+
+        p {
+            font-weight: bold;
+            margin: 0;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        font-size: inherit;
+        font-weight: inherit;
+        border-bottom: 1px solid black;
+    }
+}
