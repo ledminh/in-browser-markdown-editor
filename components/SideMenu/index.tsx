@@ -7,12 +7,12 @@ const SideMenu:FunctionComponent = () => {
 
     return (
         <>
-            <div className={styles.title}>
-                <span>MARKDOWN</span>
-            </div>
-            <h2 className={styles.myDocument}>
+            <h1 className={styles.title}>
+                MARKDOWN
+            </h1>
+            <h3 className={styles.myDocument}>
                 MY DOCUMENTS
-            </h2>
+            </h3>
             <button className={styles.newDocumentButton}>
                 <h2>+ New Document</h2>
             </button>

@@ -18,9 +18,18 @@ body,
 
 h1 {
   font-size: 0.9375rem;
+  font-weight: bold;
+  font-family: 'Commissioner', serif;
+  letter-spacing: 4px;
+  line-height: 18.35px;
 }
 
 h2 {
+  font-size: 0.9375rem;
+  font-weight: normal;
+}
+
+h3 {
   font-size: 0.875rem;
   font-weight: normal;
   letter-spacing: 2px;

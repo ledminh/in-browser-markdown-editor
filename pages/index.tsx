@@ -22,21 +22,21 @@ const Home: NextPage = () => {
         <title>Frontend Mentor | In-browser markdown editor</title>
       </Head>
       <div className={styles.container}>
-        {/* <aside className={styles.aside}>
+        <aside className={styles.aside}>
           <SideMenu/>
-        </aside> */}
+        </aside>
         <main>
-          <Panel />
+          {/* <Panel /> */}
           {/* <MainSection
               section="EDITOR"
             >
             <TextArea />
           </MainSection> */}
-          <MainSection
+          {/* <MainSection
               section="PREVIEW"
             >
             <Preview />
-          </MainSection>
+          </MainSection> */}
         </main>
       </div>
     </>
