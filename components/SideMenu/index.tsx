@@ -2,6 +2,7 @@ import { FunctionComponent } from "react"
 
 import styles from './SideMenu.module.scss';
 import FileTab from "./FileTab";
+import ThemeSwitch from "./ThemeSwitch";
 
 const SideMenu:FunctionComponent = () => {
 
@@ -24,7 +25,7 @@ const SideMenu:FunctionComponent = () => {
                 date="01 April 2022"
                 filename="welcome.md"
             />
-            <div>Switch theme</div>
+            <ThemeSwitch />
         </>
     )
 }
