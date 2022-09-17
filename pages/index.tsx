@@ -10,6 +10,7 @@ import Panel from '../components/Panel';
 import MainSection from '../layouts/MainSection';
 
 import TextArea from '../components/TextArea';
+import Preview from '../components/Preview';
 
 const Home: NextPage = () => {
   return (
@@ -34,7 +35,7 @@ const Home: NextPage = () => {
           <MainSection
               section="PREVIEW"
             >
-            <span>Preview</span>
+            <Preview />
           </MainSection>
         </main>
       </div>
