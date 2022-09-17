@@ -6,7 +6,10 @@ import favicon from '../assets/favicon-32x32.png';
 import SideMenu from '../components/SideMenu';
 import Panel from '../components/Panel';
 
+
 import MainSection from '../layouts/MainSection';
+
+import TextArea from '../components/TextArea';
 
 const Home: NextPage = () => {
   return (
@@ -26,7 +29,7 @@ const Home: NextPage = () => {
           <MainSection
               section="EDITOR"
             >
-            <span>Markdown</span>
+            <TextArea />
           </MainSection>
           {/* <MainSection>
             <span>Preview</span>

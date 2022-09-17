@@ -1,5 +1,6 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import SectionTitle from "./SectionTitle";
+import styles from './MainSection.module.scss';
 
 type SectionType = 'EDITOR' | 'PREVIEW';
 
@@ -8,7 +9,9 @@ const MainSection:FunctionComponent<{children:JSX.Element, section:SectionType}>
     return (
         <>
             <SectionTitle title={section==='EDITOR'? 'MARKDOWN': 'PREVIEW'}/>
-            {children}
+            <div className={styles.body}>
+                {children}
+            </div>
         </>
     )
 
