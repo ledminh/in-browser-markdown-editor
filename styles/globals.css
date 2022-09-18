@@ -22,6 +22,7 @@ h1 {
   font-family: 'Commissioner', serif;
   letter-spacing: 4px;
   line-height: 18.35px;
+  min-height: 56px;
 }
 
 h2 {
@@ -33,6 +34,7 @@ h3 {
   font-size: 0.875rem;
   font-weight: normal;
   letter-spacing: 2px;
+
 }
 
 a {
@@ -45,7 +47,7 @@ button {
   background-color: #E46643;
   border: none;
   color: #FFFFFF;
-  height: 40px;
+  min-height: 40px;
   border-radius: 4px;
 
   cursor: pointer;

@@ -19,27 +19,6 @@ import Modal from '../components/Modal';
 const Home: NextPage = () => {
   const [showModal, setShowModal] = useState(false);
 
-
-  // import React, { useState } from "react";
-  // import Modal from '../components/Modal'
-  
-  // export default function Home() {
-  //     const [showModal, setShowModal] = useState(false);
-  
-  //     return (
-  //         <div>
-  //             <button onClick={() => setShowModal(true)}>Open Modal</button>
-  //             <Modal
-  //                 onClose={() => setShowModal(false)}
-  //                 show={showModal}
-  //             >
-  //                 Hello from the modal!
-  //             </Modal>
-  //         </div>
-  //     )
-  // }
-
-
   return (
     <>
       <Head>
@@ -49,10 +28,74 @@ const Home: NextPage = () => {
         <title>Frontend Mentor | In-browser markdown editor</title>
       </Head>
       <div className={styles.container}>
-        {/* <aside className={styles.aside}>
+        <aside className={styles.aside}>
           <SideMenu/>
-        </aside> */}
+        </aside>
         <main>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
+          <Panel setShowModal={setShowModal}/>
           <Panel setShowModal={setShowModal}/>
           {/* <MainSection
               section="EDITOR"
@@ -64,6 +107,7 @@ const Home: NextPage = () => {
             >
             <Preview />
           </MainSection> */}
+          
         </main>
         {/* <Modal onClose={() => setShowModal(false)}
                 show={showModal}

@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react"
 
 import styles from './SideMenu.module.scss';
-import FileTab from "./FileTab";
+import FileTab, {FileTabsWrapper} from "./FileTab";
 import ThemeSwitch from "./ThemeSwitch";
 
 const SideMenu:FunctionComponent = () => {
@@ -17,14 +17,350 @@ const SideMenu:FunctionComponent = () => {
             <button className={styles.newDocumentButton}>
                 <h2>+ New Document</h2>
             </button>
-            <FileTab
-                date="01 April 2022"
-                filename="untitled-document.md"
-            />
-            <FileTab
-                date="01 April 2022"
-                filename="welcome.md"
-            />
+            <FileTabsWrapper>
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="welcome.md"
+                />
+                <FileTab
+                    date="01 April 2022"
+                    filename="untitled-document.md"
+                />
+
+
+            </FileTabsWrapper>
             <ThemeSwitch />
         </>
     )

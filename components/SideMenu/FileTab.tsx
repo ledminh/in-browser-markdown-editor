@@ -27,3 +27,14 @@ const FileTab:FunctionComponent<{date:string, filename:string}> = ({date, filena
 }
 
 export default FileTab;
+
+export const FileTabsWrapper:FunctionComponent<{children:JSX.Element[]}> = ({children}) => {
+
+    return (
+        <div className={styles.wrapper}>
+            {
+                children
+            }
+        </div>
+    )
+} 

@@ -31,3 +31,12 @@
 
     color: base.$color10;
 }
+
+
+.wrapper {
+    margin-bottom: auto;
+
+    overflow-y: scroll;
+
+    scrollbar-width: none;
+}
