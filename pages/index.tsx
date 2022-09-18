@@ -13,12 +13,12 @@ import MainSection, { SectionType } from '../layouts/MainSection';
 
 import TextArea from '../components/TextArea';
 import Preview from '../components/Preview';
+import DeleteModal from '../components/Modal/DeleteModal';
 
-import Modal from '../components/Modal';
 
 
 const Home: NextPage = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [curSection, setCurSection] = useState<SectionType>('EDITOR');
 
   return (
@@ -34,8 +34,7 @@ const Home: NextPage = () => {
           <SideMenu/>
         </aside> */}
         <main className={styles.main}>
-          <Panel setShowModal={setShowModal}/>
-
+          <Panel setShowDeleteModal={setShowDeleteModal}/>
           <MainSection
               section="EDITOR"
               curSection={curSection}
@@ -52,13 +51,11 @@ const Home: NextPage = () => {
           </MainSection>
           
         </main>
-        {/* <Modal onClose={() => setShowModal(false)}
-                show={showModal}
-                title={"Delete this document?"}
-        >
-          <>Hello</>
-        </Modal>
-        <div id="modal-root"></div> */}
+        <DeleteModal
+          showModal={showDeleteModal}
+          setShowModal={setShowDeleteModal}
+        />
+        <div className="modal-root"></div>
       </div>
     </>
   )

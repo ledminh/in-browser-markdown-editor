@@ -8,7 +8,7 @@ import iconDocument from '../../assets/icon-document.svg';
 import iconDelete from '../../assets/icon-delete.svg';
 import iconSave from '../../assets/icon-save.svg';
 
-const Panel:FunctionComponent<{setShowModal: (show: boolean)=>void}> = ({setShowModal}) => {
+const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void}> = ({setShowDeleteModal}) => {
 
     return (
         <div className={styles.panel}>
@@ -28,7 +28,11 @@ const Panel:FunctionComponent<{setShowModal: (show: boolean)=>void}> = ({setShow
                 <h2><span>welcome.md</span></h2>
             </div>
             <button className={styles.recycleBin}
-                onClick={() => setShowModal(true)}
+                onClick={() => {
+
+                    setShowDeleteModal(true)
+                
+                }}
             >
                 <Image 
                     src={iconDelete}

@@ -57,8 +57,10 @@ button:hover {
   background-color: #F39765;
 }
 
+.modal-root {
+  z-index: 2;
 
-
+}
 
 /* 
 PREVIEW
