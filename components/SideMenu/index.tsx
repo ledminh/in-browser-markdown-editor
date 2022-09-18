@@ -3,9 +3,8 @@ import { FunctionComponent } from "react"
 import styles from './SideMenu.module.scss';
 import FileTab, {FileTabsWrapper} from "./FileTab";
 import ThemeSwitch from "./ThemeSwitch";
-import { LightMode } from "../../pages";
 
-const SideMenu:FunctionComponent<{setLightMode: (mode:LightMode) => void}> = ({setLightMode}) => {
+const SideMenu:FunctionComponent<{light: boolean, setLightMode: (light:boolean) => void}> = ({light, setLightMode}) => {
 
     return (
         <>
@@ -31,7 +30,9 @@ const SideMenu:FunctionComponent<{setLightMode: (mode:LightMode) => void}> = ({s
 
 
             </FileTabsWrapper>
-            <ThemeSwitch  setLightMode={setLightMode}/>
+            <ThemeSwitch  
+                light={light}
+                setLightMode={setLightMode}/>
         </>
     )
 }

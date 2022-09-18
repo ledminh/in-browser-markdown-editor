@@ -38,7 +38,7 @@
 
     }
 
-    &[data-light-mode=DARK]::before{
+    [data-light=false] &::before {
         transform: translateX(-26px);
     }
 }

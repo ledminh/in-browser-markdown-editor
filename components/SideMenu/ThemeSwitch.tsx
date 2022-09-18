@@ -5,9 +5,9 @@ import styles from './ThemeSwitch.module.scss';
 import Image from 'next/image';
 import lightModeIcon from '../../assets/icon-light-mode.svg';
 import darkModeIcon from '../../assets/icon-dark-mode.svg';
-import { LightMode, ThemeContext } from "../../pages";
 
-const ThemeSwitch:FunctionComponent<{setLightMode: (mode:LightMode) => void}> = ({setLightMode}) => {
+
+const ThemeSwitch:FunctionComponent<{light:boolean, setLightMode: (mode:boolean) => void}> = ({light, setLightMode}) => {
     
     
 
@@ -19,7 +19,8 @@ const ThemeSwitch:FunctionComponent<{setLightMode: (mode:LightMode) => void}> = 
                     alt="Dark Mode Icon"
                 />
             </div>
-            <Switch setLightMode={setLightMode}/>
+            <Switch setLightMode={setLightMode}
+                        light={light}/>
             <div className={styles.lightModeIcon}>
                 <Image 
                     src={lightModeIcon}
@@ -33,22 +34,13 @@ const ThemeSwitch:FunctionComponent<{setLightMode: (mode:LightMode) => void}> = 
 export default ThemeSwitch;
 
 
-const Switch:FunctionComponent<{setLightMode: (mode:LightMode)=> void}> = ({setLightMode}) => {
+const Switch:FunctionComponent<{light:boolean, setLightMode: (mode:boolean)=> void}> = ({light, setLightMode}) => {
     
-    const lightMode = useContext(ThemeContext);
 
     return (
         <div className={styles.switch}
-            data-light-mode={lightMode}
             role="button"
-            onClick={() => {
-                if(lightMode==='DARK')
-                    setLightMode('LIGHT');
-                else {
-                    setLightMode('DARK');
-                }
-
-            }}  
+            onClick={() => setLightMode(!light)}  
         />
     )
 }
