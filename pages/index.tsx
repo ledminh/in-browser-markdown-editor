@@ -9,15 +9,17 @@ import SideMenu from '../components/SideMenu';
 import Panel from '../components/Panel';
 
 
-import MainSection from '../layouts/MainSection';
+import MainSection, { SectionType } from '../layouts/MainSection';
 
 import TextArea from '../components/TextArea';
 import Preview from '../components/Preview';
 
 import Modal from '../components/Modal';
 
+
 const Home: NextPage = () => {
-  // const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [curSection, setCurSection] = useState<SectionType>('EDITOR');
 
   return (
     <>
@@ -28,22 +30,26 @@ const Home: NextPage = () => {
         <title>Frontend Mentor | In-browser markdown editor</title>
       </Head>
       <div className={styles.container}>
-        <aside className={styles.aside}>
+        {/* <aside className={styles.aside}>
           <SideMenu/>
-        </aside>
-        <main>
-          {/* <Panel setShowModal={setShowModal}/> */}
+        </aside> */}
+        <main className={styles.main}>
+          <Panel setShowModal={setShowModal}/>
 
-          {/* <MainSection
+          <MainSection
               section="EDITOR"
+              curSection={curSection}
+              setCurSection={setCurSection}
             >
             <TextArea />
-          </MainSection> */}
-          {/* <MainSection
+          </MainSection>
+          <MainSection
               section="PREVIEW"
+              curSection={curSection}
+              setCurSection={setCurSection}
             >
             <Preview />
-          </MainSection> */}
+          </MainSection>
           
         </main>
         {/* <Modal onClose={() => setShowModal(false)}

@@ -8,13 +8,20 @@ import iconHidePreview from '../../assets/icon-hide-preview.svg';
 import { SectionType } from ".";
 
 
-const SectionTitle:FunctionComponent<{section:SectionType}> = ({section}) => {
+const SectionTitle:FunctionComponent<{section:SectionType, setCurSection: (curSection: SectionType) => void}> = ({section, setCurSection}) => {
 
 
     return(
         <div className={styles.sectionTitle}>
             <div className={styles.title}><h2>{section === 'EDITOR'? 'MARKDOWN' : 'PREVIEW'}</h2></div>
-            <button className={styles.previewEditorSwitch}>
+            <button className={styles.previewEditorSwitch}
+                onClick={() => {
+                    if(section === 'EDITOR')
+                        setCurSection('PREVIEW');
+                    else
+                        setCurSection('EDITOR');    
+                }}
+            >
                 {
                     section === 'EDITOR'?
                     <Image
