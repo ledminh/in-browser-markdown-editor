@@ -18,14 +18,28 @@
     position: relative;
     padding: 6px;
 
+    cursor: pointer;
+
     &::before {
         content: "";
         display: block;
+        
+        position: absolute;
+        
+        right: 6px;
 
         width: 12px;
         height: 12px;
         background-color: base.$color10;
 
         border-radius: 50%;
+
+        transition: all .3s;
+
+    }
+
+    &[data-light-mode=DARK]::before{
+        transform: translateX(-26px);
     }
 }
+

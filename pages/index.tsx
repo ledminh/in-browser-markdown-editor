@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import type { NextPage } from 'next'
 import Head from 'next/head'
@@ -15,11 +15,15 @@ import TextArea from '../components/TextArea';
 import Preview from '../components/Preview';
 import DeleteModal from '../components/Modal/DeleteModal';
 
+export type LightMode = 'LIGHT' | 'DARK';
 
+export const ThemeContext = React.createContext<LightMode>('LIGHT');
 
 const Home: NextPage = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [curSection, setCurSection] = useState<SectionType>('EDITOR');
+
+  const [lightMode, setLightMode] = useState<LightMode>('LIGHT');
 
   return (
     <>
@@ -29,34 +33,38 @@ const Home: NextPage = () => {
         <link rel="icon" type="image/png" sizes="32x32" href={favicon.src} />
         <title>Frontend Mentor | In-browser markdown editor</title>
       </Head>
-      <div className={styles.container}>
-        {/* <aside className={styles.aside}>
-          <SideMenu/>
-        </aside> */}
-        <main className={styles.main}>
-          <Panel setShowDeleteModal={setShowDeleteModal}/>
-          <MainSection
-              section="EDITOR"
-              curSection={curSection}
-              setCurSection={setCurSection}
-            >
-            <TextArea />
-          </MainSection>
-          <MainSection
-              section="PREVIEW"
-              curSection={curSection}
-              setCurSection={setCurSection}
-            >
-            <Preview />
-          </MainSection>
-          
-        </main>
-        <DeleteModal
-          showModal={showDeleteModal}
-          setShowModal={setShowDeleteModal}
-        />
-        <div className="modal-root"></div>
-      </div>
+      <ThemeContext.Provider value = {lightMode}>
+        <div className={styles.container}>
+          <aside className={styles.aside}>
+            <SideMenu 
+              setLightMode={setLightMode}
+            />
+          </aside>
+          <main className={styles.main}>
+            <Panel setShowDeleteModal={setShowDeleteModal}/>
+            <MainSection
+                section="EDITOR"
+                curSection={curSection}
+                setCurSection={setCurSection}
+              >
+              <TextArea />
+            </MainSection>
+            <MainSection
+                section="PREVIEW"
+                curSection={curSection}
+                setCurSection={setCurSection}
+              >
+              <Preview />
+            </MainSection>
+            
+          </main>
+          <DeleteModal
+            showModal={showDeleteModal}
+            setShowModal={setShowDeleteModal}
+          />
+          <div className="modal-root"></div>
+        </div>
+      </ThemeContext.Provider>
     </>
   )
 }
