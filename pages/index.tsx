@@ -42,7 +42,7 @@ const Home: NextPage = () => {
           <Panel setShowDeleteModal={setShowDeleteModal}
                   setMenuOut={setMenuOut}
                   menuOut={menuOut}
-          />
+            />
           <MainSection
               section="EDITOR"
               curSection={curSection}

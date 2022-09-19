@@ -10,14 +10,16 @@ const Modal:FunctionComponent<{show:boolean, onClose: () => void, children:JSX.E
         setIsBrowser(true);
     }, []);
 
-    const handleCloseClick = (e:Event) => {
-        e.preventDefault();
-        onClose();
-    };
 
     const modalContent = show ? (
-        <div className={styles.modalOverlay}>
-            <div className={styles.modal}>
+        <div className={styles.modalOverlay}
+                onClick={() => onClose()}
+            >
+            <div className={styles.modal}
+                onClick={(e) => {
+                    e.stopPropagation();
+                }}
+            >
                 {title && <div className={styles.modalTitle}>{title}</div>}
                 <div className={styles.modalBody}>{children}</div>
             </div>
