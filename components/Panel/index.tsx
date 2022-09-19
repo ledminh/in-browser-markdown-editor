@@ -7,16 +7,26 @@ import iconMenu from '../../assets/icon-menu.svg';
 import iconDocument from '../../assets/icon-document.svg';
 import iconDelete from '../../assets/icon-delete.svg';
 import iconSave from '../../assets/icon-save.svg';
+import iconClose from '../../assets/icon-close.svg';
 
-const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void}> = ({setShowDeleteModal}) => {
+const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setMenuOut: (out: boolean) => void, menuOut:boolean}> = ({setShowDeleteModal, setMenuOut, menuOut}) => {
 
     return (
         <div className={styles.panel}>
-            <div className={styles.menuImage}>
-                <Image
-                    src={iconMenu}
-                    alt="Menu Icon"
-                />    
+            <div className={styles.menuImage}
+                onClick={() => setMenuOut(!menuOut)}
+            >
+                {
+                    menuOut?
+                    <Image
+                        src={iconClose}
+                        alt="Close Icon"
+                    />:
+                    <Image
+                        src={iconMenu}
+                        alt="Menu Icon"
+                    />    
+                }
             </div>
             <div className={styles.fileName}>
                 <div>

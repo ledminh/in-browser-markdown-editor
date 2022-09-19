@@ -21,6 +21,7 @@ const Home: NextPage = () => {
   const [curSection, setCurSection] = useState<SectionType>('EDITOR');
 
   const [lightMode, setLightMode] = useState<boolean>(true);
+  const [menuOut, setMenuOut] = useState<boolean>(false);
 
   return (
     <>
@@ -31,14 +32,17 @@ const Home: NextPage = () => {
         <title>Frontend Mentor | In-browser markdown editor</title>
       </Head>
       <div className={styles.container} data-light={lightMode}>
-        <aside className={styles.aside}>
+        <aside className={styles.aside + (menuOut? ' ' + styles.menuOut: '')}>
           <SideMenu 
             setLightMode={setLightMode}
             light={lightMode}
           />
         </aside>
-        <main className={styles.main}>
-          <Panel setShowDeleteModal={setShowDeleteModal}/>
+        <main className={styles.main + (menuOut? ' ' + styles.menuOut: '')}>
+          <Panel setShowDeleteModal={setShowDeleteModal}
+                  setMenuOut={setMenuOut}
+                  menuOut={menuOut}
+          />
           <MainSection
               section="EDITOR"
               curSection={curSection}
