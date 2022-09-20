@@ -18,6 +18,7 @@ import SaveModal from '../components/Modal/SaveModal';
 
 
 const Home: NextPage = () => {
+  // UI states
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showSaveModal, setShowSaveModal] = useState(false);
 
@@ -25,6 +26,8 @@ const Home: NextPage = () => {
 
   const [lightMode, setLightMode] = useState<boolean>(true);
   const [menuOut, setMenuOut] = useState<boolean>(false);
+
+
 
   return (
     <>

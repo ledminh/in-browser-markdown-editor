@@ -6,6 +6,11 @@
     display: flex;
     align-items: center;
     gap: 10px;
+
+    path {
+        transition: fill .3s;
+    }
+    
 }
 
 .switch {
@@ -19,6 +24,8 @@
     padding: 6px;
 
     cursor: pointer;
+
+
 
     &::before {
         content: "";
