@@ -4,13 +4,12 @@ import styles from './SideMenu.module.scss';
 import FileTab, {FileTabsWrapper} from "./FileTab";
 import ThemeSwitch from "./ThemeSwitch";
 
+import Title from "../Title";
 const SideMenu:FunctionComponent<{light: boolean, setLightMode: (light:boolean) => void}> = ({light, setLightMode}) => {
 
     return (
         <>
-            <h1 className={styles.title}>
-                MARKDOWN
-            </h1>
+            <Title />
             <h3 className={styles.myDocument}>
                 MY DOCUMENTS
             </h3>

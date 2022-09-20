@@ -1,0 +1,39 @@
+@use '../../styles/base';
+
+.title {
+    height: 56px;
+
+    align-items: center;
+
+    
+    aside & {
+        display: flex;
+    }
+
+    main & {
+        display: none;
+        color: base.$color10;
+        
+        h1 {
+            padding-left: 1.5rem;
+            padding-right: 1.8125rem;
+            border-right: 1px solid base.$color5;
+            height: 40px;
+            
+
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    @media (min-width:1200px) {
+        aside & {
+            display: none;
+        }
+
+        main & {
+            display: flex;
+        }
+    }
+
+}

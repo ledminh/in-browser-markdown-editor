@@ -1,18 +1,29 @@
 @use '../../styles/base';
 
-.title {
-    height: 56px;
 
-    display: flex;
-    align-items: center;
-
-}
 
 .myDocument {
     color: base.$color6;
+
+
 }
 
 .newDocumentButton {
     width: 100%;
     margin: 1.7rem 0;
+}
+
+
+@media (min-width: 1200px) {
+    .myDocument {
+        height: 56px;
+        
+        display: flex;
+        align-items: center;
+    }
+
+    .newDocumentButton {
+        margin: 0 0 1.7rem 0;
+    }
+    
 }

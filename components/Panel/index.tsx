@@ -8,6 +8,7 @@ import iconDocument from '../../assets/icon-document.svg';
 import iconDelete from '../../assets/icon-delete.svg';
 import iconSave from '../../assets/icon-save.svg';
 import iconClose from '../../assets/icon-close.svg';
+import Title from '../Title';
 
 const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setShowSaveModal: (show: boolean)=>void, setMenuOut: (out: boolean) => void, menuOut:boolean}> = ({setShowDeleteModal, setShowSaveModal, setMenuOut, menuOut}) => {
 
@@ -28,6 +29,7 @@ const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setSho
                     />    
                 }
             </div>
+            <Title/>
             <div className={styles.fileName}>
                 <div>
                     <Image 
