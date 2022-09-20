@@ -1,0 +1,25 @@
+.previewFullScreenSwitch {
+    margin-right: 16px;
+
+    background: transparent;
+
+    &:hover {
+        background: transparent;
+
+        opacity: .7;
+    }
+}
+
+.previewFullScreenSwitch {
+    display: none;
+}
+
+
+@media (min-width: 865px) {
+
+    .previewFullScreenSwitch {
+        display: block;
+    }
+
+    
+}

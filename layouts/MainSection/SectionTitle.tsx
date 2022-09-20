@@ -1,12 +1,11 @@
 import { FunctionComponent } from "react";
 import styles from './SectionTitle.module.scss';
 
-import Image from 'next/image';
-import iconShowPreview from '../../assets/icon-show-preview.svg';
-import iconHidePreview from '../../assets/icon-hide-preview.svg';
+
 
 import { SectionType } from ".";
 import PreviewEditorSwitch from "./PreviewEditorSwitch";
+import PreviewFullScreenSwitch from "./PreviewFullScreenSwitch";
 
 
 const SectionTitle:FunctionComponent<{section:SectionType, setCurSection: (curSection: SectionType) => void, setFullScreen: (fs:boolean) => void, fullscreen:boolean}> = ({section, setCurSection, setFullScreen, fullscreen}) => {
@@ -19,26 +18,11 @@ const SectionTitle:FunctionComponent<{section:SectionType, setCurSection: (curSe
                 section={section}
                 setCurSection={setCurSection}
             />
-            {
-                section === 'PREVIEW'?
-                    <button className={styles.previewFullScreenSwitch}
-                        onClick={() => setFullScreen(!fullscreen)}
-                    >
-                        {
-                            fullscreen?
-                            <Image
-                                src={iconHidePreview}
-                                alt="hide preview icon"
-                            />
-                            :
-                            <Image
-                                src={iconShowPreview}
-                                alt="show preview icon"
-                            />
-                        }
-                    </button>:
-                    null
-            }
+            <PreviewFullScreenSwitch 
+                section={section}
+                setFullScreen={setFullScreen}
+                fullscreen={fullscreen}
+            />
 
         </div>
     )
