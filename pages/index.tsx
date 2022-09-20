@@ -14,10 +14,13 @@ import MainSection, { SectionType } from '../layouts/MainSection';
 import TextArea from '../components/TextArea';
 import Preview from '../components/Preview';
 import DeleteModal from '../components/Modal/DeleteModal';
+import SaveModal from '../components/Modal/SaveModal';
 
 
 const Home: NextPage = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showSaveModal, setShowSaveModal] = useState(false);
+
   const [curSection, setCurSection] = useState<SectionType>('EDITOR');
 
   const [lightMode, setLightMode] = useState<boolean>(true);
@@ -40,6 +43,7 @@ const Home: NextPage = () => {
         </aside>
         <main className={styles.main + (menuOut? ' ' + styles.menuOut: '')}>
           <Panel setShowDeleteModal={setShowDeleteModal}
+                  setShowSaveModal={setShowSaveModal}
                   setMenuOut={setMenuOut}
                   menuOut={menuOut}
             />
@@ -62,6 +66,10 @@ const Home: NextPage = () => {
         <DeleteModal
           showModal={showDeleteModal}
           setShowModal={setShowDeleteModal}
+        />
+        <SaveModal 
+          showModal={showSaveModal}
+          setShowModal={setShowSaveModal}
         />
         <div className="modal-root"></div>
       </div>

@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 
 import styles from './Modal.module.scss';
 
-const Modal:FunctionComponent<{show:boolean, onClose: () => void, children:JSX.Element[], title: string}> = ({ show, onClose, children, title }) => {
+const Modal:FunctionComponent<{show:boolean, onClose: () => void, children:JSX.Element[]|JSX.Element, title: string}> = ({ show, onClose, children, title }) => {
     const [isBrowser, setIsBrowser] = useState(false);
 
     useEffect(() => {

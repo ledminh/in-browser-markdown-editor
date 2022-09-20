@@ -15,7 +15,11 @@ const DeleteModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boo
         >
             <p>Are you sure you want to delete the &apos;welcome.md&apos; document and its contents?</p>
             <p>This action cannot be reversed.</p>
-            <button className={styles.button}>
+            <button className={styles.button}
+                onClick= {(e) => {
+                    setShowModal(false);
+                }}
+            >
                 <h2>Confirm {"&"} Delete</h2>
             </button>
         </Modal>

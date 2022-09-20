@@ -9,7 +9,7 @@ import iconDelete from '../../assets/icon-delete.svg';
 import iconSave from '../../assets/icon-save.svg';
 import iconClose from '../../assets/icon-close.svg';
 
-const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setMenuOut: (out: boolean) => void, menuOut:boolean}> = ({setShowDeleteModal, setMenuOut, menuOut}) => {
+const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setShowSaveModal: (show: boolean)=>void, setMenuOut: (out: boolean) => void, menuOut:boolean}> = ({setShowDeleteModal, setShowSaveModal, setMenuOut, menuOut}) => {
 
     return (
         <div className={styles.panel}>
@@ -38,18 +38,15 @@ const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setMen
                 <h2><span>welcome.md</span></h2>
             </div>
             <button className={styles.recycleBin}
-                onClick={() => {
-
-                    setShowDeleteModal(true)
-                
-                }}
-            >
+                onClick={() => setShowDeleteModal(true)}            >
                 <Image 
                     src={iconDelete}
                     alt="Delete Icon"
                 />
             </button>
-            <button className={styles.save}>
+            <button className={styles.save}
+                onClick={() => setShowSaveModal(true)}
+            >
                 <Image
                     src={iconSave}
                     alt="Save Icon"
