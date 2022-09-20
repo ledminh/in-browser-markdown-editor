@@ -32,10 +32,11 @@
 .modal {
     font-family: 'Roboto Slab', serif;
 
-    margin: 0 1rem;
+    width: 343px;
+    margin: auto;
+
     padding:24px;
     border-radius: 4px;
-    width: 100%;
     background-color: base.$color10;
 
     opacity: 1;
