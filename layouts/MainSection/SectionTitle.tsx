@@ -8,13 +8,13 @@ import iconHidePreview from '../../assets/icon-hide-preview.svg';
 import { SectionType } from ".";
 
 
-const SectionTitle:FunctionComponent<{section:SectionType, setCurSection: (curSection: SectionType) => void}> = ({section, setCurSection}) => {
+const SectionTitle:FunctionComponent<{section:SectionType, setCurSection: (curSection: SectionType) => void, setFullScreen: (fs:boolean) => void, fullscreen:boolean}> = ({section, setCurSection, setFullScreen, fullscreen}) => {
 
 
     return(
-        <div className={styles.sectionTitle}>
+        <div className={styles.sectionTitle} data-section={section}>
             <div className={styles.title}><h2>{section === 'EDITOR'? 'MARKDOWN' : 'PREVIEW'}</h2></div>
-            <button className={styles.previewEditorSwitch}
+            <button className={styles.previewEditorSwitchSmallScreen}
                 onClick={() => {
                     if(section === 'EDITOR')
                         setCurSection('PREVIEW');
@@ -24,17 +24,43 @@ const SectionTitle:FunctionComponent<{section:SectionType, setCurSection: (curSe
             >
                 {
                     section === 'EDITOR'?
-                    <Image
-                        src={iconShowPreview}
-                        alt="show preview icon"
-                    />
+                    <div>
+                        <Image
+                            src={iconShowPreview}
+                            alt="show preview icon"
+                        />
+                    </div>
                     :
-                    <Image
-                        src={iconHidePreview}
-                        alt="hide preview icon"
-                    />
+                    <div className={styles.hidePreviewIcon}>
+                        <Image
+                            src={iconHidePreview}
+                            alt="hide preview icon"
+                        />
+                    </div>
+
                 }
             </button>
+            {
+                section === 'PREVIEW'?
+                    <button className={styles.previewFullScreenSwitch}
+                        onClick={() => setFullScreen(!fullscreen)}
+                    >
+                        {
+                            fullscreen?
+                            <Image
+                                src={iconHidePreview}
+                                alt="hide preview icon"
+                            />
+                            :
+                            <Image
+                                src={iconShowPreview}
+                                alt="show preview icon"
+                            />
+                        }
+                    </button>:
+                    null
+            }
+
         </div>
     )
 }
