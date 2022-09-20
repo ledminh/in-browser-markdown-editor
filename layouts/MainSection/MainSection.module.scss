@@ -1,3 +1,15 @@
+@use '../../styles/base';
+
+.section {
+    transition: all .3s;
+    
+    [data-light=false] & {
+        background-color: base.$color1;
+    
+    }
+}
+
+
 .body {
     margin: 1rem;
 
@@ -10,6 +22,7 @@
         }
 
     }
+
 
 }
 

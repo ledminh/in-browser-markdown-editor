@@ -1,3 +1,5 @@
+@use '../../styles/base';
+
 .textArea {
     width: 100%;
     min-height: 60vh;
@@ -9,5 +11,13 @@
     font-family: 'Roboto Mono', serif;
     font-size: 14px;
     line-height: 24px;
+
+    transition: all .3s;
+
+
+    [data-light=false] & {
+        background-color: base.$color1;
+        color: base.$color7;
+    }
 
 }

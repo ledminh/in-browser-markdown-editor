@@ -11,6 +11,12 @@
 
     height: 42px;
 
+    transition: all .3s;
+    
+    [data-light=false] & {
+        background-color: base.$color2;
+    }
+
     
 }
 

@@ -1,6 +1,8 @@
 @use '../../styles/base';
 
 .preview {
+    
+
     * {
         margin-bottom: 1.375rem;
         
@@ -10,6 +12,8 @@
         line-height: 24px;
 
         color: base.$color6;
+
+        transition: all .3s;
         
     }    
     
@@ -102,5 +106,49 @@
         padding: 24px;
 
         font-family: 'Roboto Mono', serif;
+    }
+
+    [data-light=false] & {
+        * {
+            color: base.$color7;
+
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: base.$color10;
+
+        }
+
+        h6 {
+            color: base.$color11;
+        }
+
+        blockquote {
+            background-color: base.$color3;
+            * {
+                color: base.$color10;
+            }
+        }
+
+        a {
+            border-bottom: 1px solid base.$color10;
+
+        }
+
+        code {
+            color: base.$color10;
+        }
+
+        pre {
+            background-color: base.$color3;
+            color: base.$color10;
+        }
+
+
     }
 }
