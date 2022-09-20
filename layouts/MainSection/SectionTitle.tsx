@@ -6,6 +6,7 @@ import iconShowPreview from '../../assets/icon-show-preview.svg';
 import iconHidePreview from '../../assets/icon-hide-preview.svg';
 
 import { SectionType } from ".";
+import PreviewEditorSwitch from "./PreviewEditorSwitch";
 
 
 const SectionTitle:FunctionComponent<{section:SectionType, setCurSection: (curSection: SectionType) => void, setFullScreen: (fs:boolean) => void, fullscreen:boolean}> = ({section, setCurSection, setFullScreen, fullscreen}) => {
@@ -14,32 +15,10 @@ const SectionTitle:FunctionComponent<{section:SectionType, setCurSection: (curSe
     return(
         <div className={styles.sectionTitle} data-section={section}>
             <div className={styles.title}><h2>{section === 'EDITOR'? 'MARKDOWN' : 'PREVIEW'}</h2></div>
-            <button className={styles.previewEditorSwitchSmallScreen}
-                onClick={() => {
-                    if(section === 'EDITOR')
-                        setCurSection('PREVIEW');
-                    else
-                        setCurSection('EDITOR');    
-                }}
-            >
-                {
-                    section === 'EDITOR'?
-                    <div>
-                        <Image
-                            src={iconShowPreview}
-                            alt="show preview icon"
-                        />
-                    </div>
-                    :
-                    <div className={styles.hidePreviewIcon}>
-                        <Image
-                            src={iconHidePreview}
-                            alt="hide preview icon"
-                        />
-                    </div>
-
-                }
-            </button>
+            <PreviewEditorSwitch 
+                section={section}
+                setCurSection={setCurSection}
+            />
             {
                 section === 'PREVIEW'?
                     <button className={styles.previewFullScreenSwitch}

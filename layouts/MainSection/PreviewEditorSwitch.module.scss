@@ -1,0 +1,19 @@
+.previewEditorSwitch {
+    margin-right: 16px;
+
+    background: transparent;
+
+    &:hover {
+        background: transparent;
+
+        opacity: .7;
+    }
+
+    @media (min-width: 865px) {
+        display: none;
+    }
+
+}
+
+
+

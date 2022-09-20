@@ -3,9 +3,10 @@
 
 
     @media (min-width: 865px) {
+        
         [data-fullscreen=true] & {
             width: 672px;
-            margin: auto;
+            margin: 1.375rem auto;
         }
 
     }
