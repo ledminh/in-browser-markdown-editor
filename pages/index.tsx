@@ -63,8 +63,7 @@ const Home: NextPage = () => {
               setCurSection={setCurSection}
             >
             <Preview />
-          </MainSection>
-          
+          </MainSection>          
         </main>
         <DeleteModal
           showModal={showDeleteModal}

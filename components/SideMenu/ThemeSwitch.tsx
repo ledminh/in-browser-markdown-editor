@@ -2,9 +2,6 @@ import { FunctionComponent, useContext } from "react";
 
 import styles from './ThemeSwitch.module.scss';
 
-import Image from 'next/image';
-import lightModeIcon from '../../assets/icon-light-mode.svg';
-import darkModeIcon from '../../assets/icon-dark-mode.svg';
 import DarkModeIcon from "./DarkModeIcon";
 import LightModeIcon from "./LightModeIcon";
 
