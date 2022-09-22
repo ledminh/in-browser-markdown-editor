@@ -1,20 +1,39 @@
-import { FunctionComponent, useRef, useState } from "react";
+import React, { ChangeEvent, FunctionComponent, RefObject, useEffect, useRef, useState } from "react";
 import styles from './TextArea.module.scss';
 
-const TextArea:FunctionComponent = () => {
+const TextArea:FunctionComponent<{docContent: string, setContent: (content:string) => void, previewRef: RefObject<HTMLDivElement>}> = ({docContent, setContent, previewRef}) => {
+
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
+    useEffect(() => {
+        if(textAreaRef.current){
+            textAreaRef.current.style.height = '';
+            textAreaRef.current.style.height = textAreaRef.current.scrollHeight +  8 + 'px';           
+        }
+    }, []);
+
+
     return (
-        <textarea
-            ref={textAreaRef}
-            className={styles.textArea}
-            onInput={(e) => {
-                if(textAreaRef.current){
-                    textAreaRef.current.style.height = '0';
-                    textAreaRef.current.style.height = (textAreaRef.current.scrollHeight) + "px";
-                }
-            }}
-        />
+        <div>
+            <textarea
+                    className={styles.textArea}
+                    onChange={(e) => {                
+                        if(textAreaRef.current){
+                            setContent(textAreaRef.current.value);
+    
+                            textAreaRef.current.style.height = '';
+                            textAreaRef.current.style.height = textAreaRef.current.scrollHeight + 8 + 'px';
+                            
+                        }
+    
+                    }}
+    
+                    ref={textAreaRef}
+        
+                    value={docContent}
+                />
+
+        </div>
     )
 }
 

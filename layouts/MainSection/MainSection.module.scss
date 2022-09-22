@@ -1,19 +1,22 @@
 @use '../../styles/base';
 
 .section {
+    
     transition: all .3s;
     
     [data-light=false] & {
         background-color: base.$color1;
     
     }
+
+    
+    width: 100%;
 }
 
 
 .body {
     margin: 1rem;
-
-
+    
     @media (min-width: 865px) {
         
         [data-fullscreen=true] & {

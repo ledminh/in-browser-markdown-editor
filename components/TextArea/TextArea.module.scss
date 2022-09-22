@@ -2,12 +2,12 @@
 
 .textArea {
     width: 100%;
-    min-height: 60vh;
-
+    min-height: calc(100vh - 130px);
     border: none;
     resize: none;
     outline: none;
 
+    overflow: hidden;
     font-family: 'Roboto Mono', serif;
     font-size: 14px;
     line-height: 24px;
@@ -18,6 +18,6 @@
     [data-light=false] & {
         background-color: base.$color1;
         color: base.$color7;
-    }
+    }    
 
 }
