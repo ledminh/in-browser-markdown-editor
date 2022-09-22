@@ -6,10 +6,15 @@ import Image from 'next/image';
 import iconDocument from '../../assets/icon-document.svg';
 
 
-const FileTab:FunctionComponent<{date:string, filename:string}> = ({date, filename}) => {
+const FileTab:FunctionComponent<{date:string, filename:string, curDocIndex:Number, index: number, setCurDocIndex: (i:number) => void}> = ({date, filename, curDocIndex, index, setCurDocIndex}) => {
 
     return (
-        <div className={styles.fileTab}>
+        <div className={styles.fileTab} 
+                data-current={curDocIndex===index}
+                onClick={() => {
+                    setCurDocIndex(index);
+                }}
+                >
             <div className={styles.image}>
                 <Image 
                     src={iconDocument}

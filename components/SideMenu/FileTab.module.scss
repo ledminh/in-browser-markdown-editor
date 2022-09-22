@@ -2,12 +2,38 @@
 
 .fileTab {
     display: grid;
+    
     grid-template-columns: 30px auto;
     grid-template-rows: 1fr 1fr;
 
     row-gap: 3px;
 
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.1rem;
+
+    padding: .5rem;
+
+    cursor: pointer;
+
+    position: relative;
+
+    &:hover::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        background-color: base.$color9;
+        opacity: .2;
+    }
+
+
+    &[data-current=true] {
+        border: 1px solid base.$color9;
+
+        &:hover::after {
+            background: transparent;
+        }
+    }
 }
 
 .image {

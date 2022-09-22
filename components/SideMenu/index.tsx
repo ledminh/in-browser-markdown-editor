@@ -5,7 +5,8 @@ import FileTab, {FileTabsWrapper} from "./FileTab";
 import ThemeSwitch from "./ThemeSwitch";
 
 import Title from "../Title";
-const SideMenu:FunctionComponent<{light: boolean, setLightMode: (light:boolean) => void}> = ({light, setLightMode}) => {
+import { DocType } from "../../pages";
+const SideMenu:FunctionComponent<{light: boolean, setLightMode: (light:boolean) => void, docs:DocType[], curDocIndex:Number, setCurDocIndex: (index:number) => void}> = ({light, setLightMode, docs, curDocIndex, setCurDocIndex}) => {
 
     return (
         <>
@@ -17,17 +18,18 @@ const SideMenu:FunctionComponent<{light: boolean, setLightMode: (light:boolean) 
                 <h2>+ New Document</h2>
             </button>
             <FileTabsWrapper>
-                
-                <FileTab
-                    date="01 April 2022"
-                    filename="welcome.md"
-                />
-                <FileTab
-                    date="01 April 2022"
-                    filename="untitled-document.md"
-                />
-
-
+                {
+                    docs.map(({createdAt,name}, index) => (
+                        <FileTab
+                            key={name}
+                            date={createdAt}
+                            filename={name}
+                            index={index}
+                            curDocIndex={curDocIndex}
+                            setCurDocIndex={setCurDocIndex}
+                        />
+                    ))
+                }
             </FileTabsWrapper>
             <ThemeSwitch  
                 light={light}

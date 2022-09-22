@@ -16,7 +16,7 @@ import Preview from '../components/Preview';
 import DeleteModal from '../components/Modal/DeleteModal';
 import SaveModal from '../components/Modal/SaveModal';
 
-type DocType = {
+export type DocType = {
   createdAt: string,
   name: string,
   content: string
@@ -56,6 +56,9 @@ const Home: NextPage<{propDocs: DocType[]}> = ({propDocs}) => {
           <SideMenu 
             setLightMode={setLightMode}
             light={lightMode}
+            docs={docs}
+            curDocIndex={curDocIndex}
+            setCurDocIndex={setCurDocIndex}
           />
         </aside>
         <main className={styles.main + (menuOut? ' ' + styles.menuOut: '')}>
