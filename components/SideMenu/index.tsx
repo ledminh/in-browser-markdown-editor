@@ -6,7 +6,7 @@ import ThemeSwitch from "./ThemeSwitch";
 
 import Title from "../Title";
 import { DocType } from "../../pages";
-const SideMenu:FunctionComponent<{light: boolean, setLightMode: (light:boolean) => void, docs:DocType[], curDocIndex:Number, setCurDocIndex: (index:number) => void}> = ({light, setLightMode, docs, curDocIndex, setCurDocIndex}) => {
+const SideMenu:FunctionComponent<{light: boolean, setLightMode: (light:boolean) => void, docs:DocType[], curDocIndex:Number, setCurDocIndex: (index:number) => void, createNewDoc: () => void}> = ({light, setLightMode, docs, curDocIndex, setCurDocIndex, createNewDoc}) => {
 
     return (
         <>
@@ -14,7 +14,9 @@ const SideMenu:FunctionComponent<{light: boolean, setLightMode: (light:boolean) 
             <h3 className={styles.myDocument}>
                 MY DOCUMENTS
             </h3>
-            <button className={styles.newDocumentButton}>
+            <button className={styles.newDocumentButton}
+                onClick={createNewDoc}
+            >
                 <h2>+ New Document</h2>
             </button>
             <FileTabsWrapper>

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import type { NextPage } from 'next'
 import Head from 'next/head'
@@ -38,7 +38,7 @@ const Home: NextPage<{propDocs: DocType[]}> = ({propDocs}) => {
 
   //Data states
   const {
-    docs, curDocIndex, setCurDocIndex, setContent
+    docs, curDocIndex, setCurDocIndex, setContent, createNewDoc
   } = useData(propDocs);
 
 
@@ -59,6 +59,7 @@ const Home: NextPage<{propDocs: DocType[]}> = ({propDocs}) => {
             docs={docs}
             curDocIndex={curDocIndex}
             setCurDocIndex={setCurDocIndex}
+            createNewDoc={createNewDoc}
           />
         </aside>
         <main className={styles.main + (menuOut? ' ' + styles.menuOut: '')}>
@@ -66,6 +67,7 @@ const Home: NextPage<{propDocs: DocType[]}> = ({propDocs}) => {
                   setShowSaveModal={setShowSaveModal}
                   setMenuOut={setMenuOut}
                   menuOut={menuOut}
+                  filename={docs[curDocIndex].name}
             />
           <MainSection
               section="EDITOR"
@@ -137,8 +139,30 @@ const useData  = (propDocs: DocType[]) => {
     setDocs(newDocs);
   }
 
+  const createNewDoc = () => {
+    const dateString = new Date().toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"}) ;
+    
+    const newDoc:DocType = {
+      createdAt: dateString,
+      name: 'newdoc.md',
+      content: ''
+    };
+
+    setDocs([newDoc, ...docs]);   
+
+
+  }
+
+  const prevDocs = useRef<DocType[]>(docs);
+  useEffect(() => {
+    if(prevDocs.current.length < docs.length) {
+      setCurDocIndex(0);
+      prevDocs.current = docs;
+    }  
+  }, [docs]);
+
   return {
-    docs, curDocIndex, setCurDocIndex, setContent
+    docs, curDocIndex, setCurDocIndex, setContent, createNewDoc
   }
 
 

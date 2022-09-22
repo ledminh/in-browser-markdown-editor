@@ -10,7 +10,7 @@ import iconSave from '../../assets/icon-save.svg';
 import iconClose from '../../assets/icon-close.svg';
 import Title from '../Title';
 
-const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setShowSaveModal: (show: boolean)=>void, setMenuOut: (out: boolean) => void, menuOut:boolean}> = ({setShowDeleteModal, setShowSaveModal, setMenuOut, menuOut}) => {
+const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setShowSaveModal: (show: boolean)=>void, setMenuOut: (out: boolean) => void, menuOut:boolean, filename:string}> = ({setShowDeleteModal, setShowSaveModal, setMenuOut, menuOut, filename}) => {
 
     return (
         <div className={styles.panel}>
@@ -37,7 +37,7 @@ const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setSho
                         alt="Document Icon"
                     />
                 </div>
-                <h2><span>welcome.md</span></h2>
+                <h2><span>{filename}</span></h2>
             </div>
             <button className={styles.recycleBin}
                 onClick={() => setShowDeleteModal(true)}            >
