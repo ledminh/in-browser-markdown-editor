@@ -38,7 +38,7 @@ const Home: NextPage<{propDocs: DocType[]}> = ({propDocs}) => {
 
   //Data states
   const {
-    docs, curDocIndex, setCurDocIndex, setContent, createNewDoc
+    docs, curDocIndex, setCurDocIndex, setContent, createNewDoc, saveToLocalStorage
   } = useData(propDocs);
 
 
@@ -96,6 +96,8 @@ const Home: NextPage<{propDocs: DocType[]}> = ({propDocs}) => {
         <SaveModal 
           showModal={showSaveModal}
           setShowModal={setShowSaveModal}
+          curIndex={curDocIndex}
+          saveToLocalStorage={saveToLocalStorage}
         />
         <div className="modal-root"></div>
       </div>
@@ -108,11 +110,6 @@ export default Home
 
 export async function getStaticProps() {
   return { props: { propDocs: [
-    {
-      "createdAt": "04-01-2022",
-      "name": "untitled-document.md",
-      "content": ""
-    },
     {
       "createdAt": "04-01-2022",
       "name": "welcome.md",
@@ -129,8 +126,47 @@ export async function getStaticProps() {
 const useData  = (propDocs: DocType[]) => {
 
   const [docs, setDocs] = useState(propDocs);
-  const [curDocIndex, setCurDocIndex] = useState(1);
+  const [curDocIndex, setCurDocIndex] = useState(0);
 
+  useEffect(() => {
+    const localDataStr = localStorage.getItem('markDownData');
+
+    if(localDataStr !== null) {
+      // Load data from localStorage
+      const localData = JSON.parse(localDataStr);  
+      setDocs(localData);
+      
+    }
+    else {
+      //First time using website, initial data is from propDocs.
+      
+      // Load initial data to localStorage
+      localStorage.setItem('markDownData', JSON.stringify(docs));
+    }
+
+
+  }, []);
+
+  //Save data to localStorage
+  const saveToLocalStorage = (index:number, filename:string) => {
+    const localDataStr = localStorage.getItem('markDownData');
+    const docToSave = docs[index];
+    docToSave.name = filename;
+
+    if(localDataStr !== null) {
+      const lSData = JSON.parse(localDataStr);
+      
+      const newLSData = [...lSData, docToSave];
+      localStorage.setItem('markDownData', JSON.stringify(newLSData));
+
+      let newDocs = docs.filter((d,i) => i >= newLSData.length && i !== index);
+      
+      newDocs = [...newLSData, ...newDocs];
+      setDocs(newDocs);
+    }
+  }
+
+  //setContent function
   const setContent = (content:string) => {
     const newDocs = docs.slice();
 
@@ -139,6 +175,8 @@ const useData  = (propDocs: DocType[]) => {
     setDocs(newDocs);
   }
 
+
+//createNewDoc function
   const createNewDoc = () => {
     const dateString = new Date().toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"}) ;
     
@@ -153,6 +191,7 @@ const useData  = (propDocs: DocType[]) => {
 
   }
 
+  // Set current Doc to 0 when new Doc is added
   const prevDocs = useRef<DocType[]>(docs);
   useEffect(() => {
     if(prevDocs.current.length < docs.length) {
@@ -162,7 +201,7 @@ const useData  = (propDocs: DocType[]) => {
   }, [docs]);
 
   return {
-    docs, curDocIndex, setCurDocIndex, setContent, createNewDoc
+    docs, curDocIndex, setCurDocIndex, setContent, createNewDoc, saveToLocalStorage
   }
 
 

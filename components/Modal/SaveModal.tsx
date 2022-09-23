@@ -1,12 +1,13 @@
 import { FunctionComponent } from "react";
+import { useState } from "react";
 
 import Modal from "./Modal";
 
 import styles from './SaveModal.module.scss';
 
 
-const SaveModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boolean) => void}> = ({showModal, setShowModal}) => {
-
+const SaveModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boolean) => void, saveToLocalStorage: (i:number, filename:string) => void, curIndex:number}> = ({showModal, setShowModal, saveToLocalStorage, curIndex}) => {
+    const [filename, setFilename] = useState("");
 
     return (
         <Modal onClose={() => setShowModal(false)}
@@ -18,10 +19,14 @@ const SaveModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boole
                 <input className={styles.input}
                     type="text"
                     id="filename"
+                    onChange={(e) => setFilename(e.target.value)}
+                    value={filename}
                     />
                 <button className={styles.button}
                     onClick={(e) => {
                         e.preventDefault();
+
+                        saveToLocalStorage(curIndex, filename);
                         setShowModal(false);
                     }}
                 >
