@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FunctionComponent, RefObject, useEffect, useRef, useState } from "react";
 import styles from './TextArea.module.scss';
 
-const TextArea:FunctionComponent<{docContent: string, setContent: (content:string) => void, previewRef: RefObject<HTMLDivElement>}> = ({docContent, setContent, previewRef}) => {
+const TextArea:FunctionComponent<{docContent: string, setContent: (content:string) => void}> = ({docContent, setContent}) => {
 
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
 

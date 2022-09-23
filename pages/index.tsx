@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 
+import useData from '../useData';
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
@@ -16,14 +17,9 @@ import Preview from '../components/Preview';
 import DeleteModal from '../components/Modal/DeleteModal';
 import SaveModal from '../components/Modal/SaveModal';
 
-export type DocType = {
-  createdAt: string,
-  name: string,
-  content: string
-}
+import { DocType } from '../useData';
 
-
-const Home: NextPage<{propDocs: DocType[]}> = ({propDocs}) => {
+const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
   const previewRef = useRef<HTMLDivElement>(null);
 
   // UI states
@@ -38,10 +34,11 @@ const Home: NextPage<{propDocs: DocType[]}> = ({propDocs}) => {
 
   //Data states
   const {
-    docs, curDocIndex, setCurDocIndex, setContent, createNewDoc, saveToLocalStorage
-  } = useData(propDocs);
+    getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, getDocsList
+  } = useData(initDocs);
 
-
+  const docsList = getDocsList();
+  const curDoc = getCurrentDoc();
 
   return (
     <>
@@ -56,9 +53,8 @@ const Home: NextPage<{propDocs: DocType[]}> = ({propDocs}) => {
           <SideMenu 
             setLightMode={setLightMode}
             light={lightMode}
-            docs={docs}
-            curDocIndex={curDocIndex}
-            setCurDocIndex={setCurDocIndex}
+            docsList={docsList}
+            setDocCurrent={setDocCurrent}
             createNewDoc={createNewDoc}
           />
         </aside>
@@ -67,16 +63,16 @@ const Home: NextPage<{propDocs: DocType[]}> = ({propDocs}) => {
                   setShowSaveModal={setShowSaveModal}
                   setMenuOut={setMenuOut}
                   menuOut={menuOut}
-                  filename={docs[curDocIndex].name}
+                  filename={curDoc? curDoc.name : ''}
             />
           <MainSection
               section="EDITOR"
               curSection={curSection}
               setCurSection={setCurSection}
             >
-            <TextArea docContent={docs[curDocIndex].content}
-                      setContent={setContent}
-                      previewRef={previewRef}
+            <TextArea docContent={curDoc? curDoc.content: ''}
+                      setContent={setCurDocContent}
+                      
                   />
           </MainSection>
           <MainSection
@@ -84,7 +80,7 @@ const Home: NextPage<{propDocs: DocType[]}> = ({propDocs}) => {
               curSection={curSection}
               setCurSection={setCurSection}
             >
-            <Preview docContent={docs[curDocIndex].content}
+            <Preview docContent={curDoc? curDoc.content: ''}
                 previewRef={previewRef}
               />
           </MainSection>          
@@ -96,7 +92,7 @@ const Home: NextPage<{propDocs: DocType[]}> = ({propDocs}) => {
         <SaveModal 
           showModal={showSaveModal}
           setShowModal={setShowSaveModal}
-          curIndex={curDocIndex}
+          curID={curDoc? curDoc.id: ''}
           saveToLocalStorage={saveToLocalStorage}
         />
         <div className="modal-root"></div>
@@ -109,102 +105,17 @@ export default Home
 
 
 export async function getStaticProps() {
-  return { props: { propDocs: [
+  return { props: { initDocs: [
     {
+      id: 'md_000000',
       "createdAt": "04-01-2022",
       "name": "welcome.md",
-      "content": "# Welcome to Markdown\n\nMarkdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents.\n\n## How to use this?\n\n1. Write markdown in the markdown editor window\n2. See the rendered markdown in the preview window\n\n### Features\n\n- Create headings, paragraphs, links, blockquotes, inline-code, code blocks, and lists\n- Name and save the document to access again later\n- Choose between Light or Dark mode depending on your preference\n\n> This is an example of a blockquote. If you would like to learn more about markdown syntax, you can visit this [markdown cheatsheet](https://www.markdownguide.org/cheat-sheet/).\n\n#### Headings\n\nTo create a heading, add the hash sign (#) before the heading. The number of number signs you use should correspond to the heading level. You'll see in this guide that we've used all six heading levels (not necessarily in the correct way you should use headings!) to illustrate how they should look.\n\n##### Lists\n\nYou can see examples of ordered and unordered lists above.\n\n###### Code Blocks\n\nThis markdown editor allows for inline-code snippets, like this: `<p>I'm inline</p>`. It also allows for larger code blocks like this:\n\n```\n<main>\n  <h1>This is a larger code block</h1>\n</main>\n```"
+      "content": "# Welcome to Markdown\n\nMarkdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents.\n\n## How to use this?\n\n1. Write markdown in the markdown editor window\n2. See the rendered markdown in the preview window\n\n### Features\n\n- Create headings, paragraphs, links, blockquotes, inline-code, code blocks, and lists\n- Name and save the document to access again later\n- Choose between Light or Dark mode depending on your preference\n\n> This is an example of a blockquote. If you would like to learn more about markdown syntax, you can visit this [markdown cheatsheet](https://www.markdownguide.org/cheat-sheet/).\n\n#### Headings\n\nTo create a heading, add the hash sign (#) before the heading. The number of number signs you use should correspond to the heading level. You'll see in this guide that we've used all six heading levels (not necessarily in the correct way you should use headings!) to illustrate how they should look.\n\n##### Lists\n\nYou can see examples of ordered and unordered lists above.\n\n###### Code Blocks\n\nThis markdown editor allows for inline-code snippets, like this: `<p>I'm inline</p>`. It also allows for larger code blocks like this:\n\n```\n<main>\n  <h1>This is a larger code block</h1>\n</main>\n```",
+      current: true
     }
   ] } }
 }
 
 
-/************************
- * useData
- */
 
-const useData  = (propDocs: DocType[]) => {
-
-  const [docs, setDocs] = useState(propDocs);
-  const [curDocIndex, setCurDocIndex] = useState(0);
-
-  useEffect(() => {
-    const localDataStr = localStorage.getItem('markDownData');
-
-    if(localDataStr !== null) {
-      // Load data from localStorage
-      const localData = JSON.parse(localDataStr);  
-      setDocs(localData);
-      
-    }
-    else {
-      //First time using website, initial data is from propDocs.
-      
-      // Load initial data to localStorage
-      localStorage.setItem('markDownData', JSON.stringify(docs));
-    }
-
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  //Save data to localStorage
-  const saveToLocalStorage = (index:number, filename:string) => {
-    const localDataStr = localStorage.getItem('markDownData');
-    const docToSave = docs[index];
-    docToSave.name = filename;
-
-    if(localDataStr !== null) {
-      const lSData = JSON.parse(localDataStr);
-      
-      const newLSData = [...lSData, docToSave];
-      localStorage.setItem('markDownData', JSON.stringify(newLSData));
-
-      let newDocs = docs.filter((d,i) => i >= newLSData.length && i !== index);
-      
-      newDocs = [...newLSData, ...newDocs];
-      setDocs(newDocs);
-    }
-  }
-
-  //setContent function
-  const setContent = (content:string) => {
-    const newDocs = docs.slice();
-
-    newDocs[curDocIndex].content = content;
-
-    setDocs(newDocs);
-  }
-
-
-//createNewDoc function
-  const createNewDoc = () => {
-    const dateString = new Date().toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"}) ;
-    
-    const newDoc:DocType = {
-      createdAt: dateString,
-      name: 'newdoc.md',
-      content: ''
-    };
-
-    setDocs([newDoc, ...docs]);   
-
-
-  }
-
-  // Set current Doc to 0 when new Doc is added
-  const prevDocs = useRef<DocType[]>(docs);
-  useEffect(() => {
-    if(prevDocs.current.length < docs.length) {
-      setCurDocIndex(0);
-      prevDocs.current = docs;
-    }  
-  }, [docs]);
-
-  return {
-    docs, curDocIndex, setCurDocIndex, setContent, createNewDoc, saveToLocalStorage
-  }
-
-
-}
 

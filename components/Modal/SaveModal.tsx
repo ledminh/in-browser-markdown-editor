@@ -6,7 +6,7 @@ import Modal from "./Modal";
 import styles from './SaveModal.module.scss';
 
 
-const SaveModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boolean) => void, saveToLocalStorage: (i:number, filename:string) => void, curIndex:number}> = ({showModal, setShowModal, saveToLocalStorage, curIndex}) => {
+const SaveModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boolean) => void, saveToLocalStorage: (id:string, filename:string) => void, curID:string}> = ({showModal, setShowModal, saveToLocalStorage, curID}) => {
     const [filename, setFilename] = useState("");
 
     return (
@@ -26,7 +26,7 @@ const SaveModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boole
                     onClick={(e) => {
                         e.preventDefault();
 
-                        saveToLocalStorage(curIndex, filename);
+                        saveToLocalStorage(curID, filename);
                         setShowModal(false);
                     }}
                 >
