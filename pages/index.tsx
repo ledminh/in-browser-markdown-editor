@@ -145,6 +145,7 @@ const useData  = (propDocs: DocType[]) => {
     }
 
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //Save data to localStorage
