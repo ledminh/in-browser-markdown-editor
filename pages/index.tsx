@@ -34,7 +34,7 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
 
   //Data states
   const {
-    getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, getDocsList
+    getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, getDocsList, deleteCurDoc
   } = useData(initDocs);
 
   const docsList = getDocsList();
@@ -88,6 +88,7 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
         <DeleteModal
           showModal={showDeleteModal}
           setShowModal={setShowDeleteModal}
+          deleteCurDoc={deleteCurDoc}
         />
         <SaveModal 
           showModal={showSaveModal}

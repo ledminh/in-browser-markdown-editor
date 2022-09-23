@@ -5,7 +5,7 @@ import Modal from "./Modal";
 import styles from './DeleteModal.module.scss';
 
 
-const DeleteModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boolean) => void}> = ({showModal, setShowModal}) => {
+const DeleteModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boolean) => void, deleteCurDoc: ()=> void}> = ({showModal, setShowModal, deleteCurDoc}) => {
 
 
     return (
@@ -17,6 +17,7 @@ const DeleteModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boo
             <p>This action cannot be reversed.</p>
             <button className={styles.button}
                 onClick= {(e) => {
+                    deleteCurDoc();
                     setShowModal(false);
                 }}
             >

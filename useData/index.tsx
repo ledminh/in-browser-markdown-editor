@@ -108,6 +108,27 @@ const useData  = (initDocs: DocType[]) => {
         setDocs(newDocs);
     }
 
+    const deleteCurDoc = () => {
+        let curI = -1;
+
+        const newDocs = docs.filter((d, i) => {
+            if(d.current) {
+                curI = i;
+            }
+
+            return d.current === false;
+        });
+
+        if(curI > 0) {
+            curI = curI - 1;
+        }
+
+        if(newDocs.length > 0)
+            newDocs[curI].current = true;
+
+        setDocs(newDocs);
+        localStorage.setItem('markDownData', JSON.stringify(newDocs))
+    }
     
     //Save doc to localStorage
     const saveToLocalStorage = (id:string, filename:string) => {
@@ -162,7 +183,7 @@ const useData  = (initDocs: DocType[]) => {
         
         
         return {
-            getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, getDocsList
+            getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, getDocsList, deleteCurDoc
         }
 
 
