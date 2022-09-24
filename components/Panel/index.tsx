@@ -11,15 +11,20 @@ import iconClose from '../../assets/icon-close.svg';
 import Title from '../Title';
 import { savingSource } from '../../useData';
 
-const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setShowSaveModal: (show: boolean)=>void, setMenuOut: (out: boolean) => void, menuOut:boolean, filename:string, savingSource?:savingSource, updateLocalStorage: () => void}> = ({setShowDeleteModal, setShowSaveModal, setMenuOut, menuOut, filename, savingSource, updateLocalStorage}) => {
+const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setShowSaveModal: (show: boolean)=>void, setShowMenu: (show: boolean) => void, showMenu:boolean, filename:string, savingSource?:savingSource, updateLocalStorage: () => void}> = ({setShowDeleteModal, setShowSaveModal, setShowMenu, showMenu, filename, savingSource, updateLocalStorage}) => {
 
     return (
         <div className={styles.panel}>
             <div className={styles.menuImage}
-                onClick={() => setMenuOut(!menuOut)}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    setShowMenu(!showMenu);
+
+
+                }}
             >
                 {
-                    menuOut?
+                    showMenu?
                     <Image
                         src={iconClose}
                         alt="Close Icon"

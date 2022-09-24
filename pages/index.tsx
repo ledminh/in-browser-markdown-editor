@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import useData from '../useData';
 import type { NextPage } from 'next'
@@ -31,7 +31,18 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
   const [curSection, setCurSection] = useState<SectionType>('EDITOR');
 
   const [lightMode, setLightMode] = useState<boolean>(true);
-  const [menuOut, setMenuOut] = useState<boolean>(false);
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+
+
+  useEffect(() => {
+    const hideMenu = () => setShowMenu(false);
+
+    document.addEventListener('click', hideMenu);
+
+    return () => {
+      document.removeEventListener('click', hideMenu);
+    }
+  }, []);
 
 
   //Data states
@@ -51,7 +62,9 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
         <title>Frontend Mentor | In-browser markdown editor</title>
       </Head>
       <div className={styles.container} data-light={lightMode}>
-        <aside className={styles.aside + (menuOut? ' ' + styles.menuOut: '')}>
+        <aside className={styles.aside + (showMenu? ' ' + styles.showMenu: '')}
+          onClick={(e) => e.stopPropagation()}
+        >
           <SideMenu 
             setLightMode={setLightMode}
             light={lightMode}
@@ -60,11 +73,11 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
             createNewDoc={createNewDoc}
           />
         </aside>
-        <main className={styles.main + (menuOut? ' ' + styles.menuOut: '')}>
+        <main className={styles.main + (showMenu? ' ' + styles.showMenu: '')}>
           <Panel setShowDeleteModal={setShowDeleteModal}
                   setShowSaveModal={setShowSaveModal}
-                  setMenuOut={setMenuOut}
-                  menuOut={menuOut}
+                  setShowMenu={setShowMenu}
+                  showMenu={showMenu}
                   filename={curDoc? curDoc.name : ''}
                   updateLocalStorage={updateLocalStorage}
                   savingSource={curDoc?.savedAt}
