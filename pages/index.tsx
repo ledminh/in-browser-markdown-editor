@@ -81,6 +81,7 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
                   filename={curDoc? curDoc.name : ''}
                   updateLocalStorage={updateLocalStorage}
                   savingSource={curDoc?.savedAt}
+                  noDoc={isEmpty()}
             />
             {
               isEmpty()? 

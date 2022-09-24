@@ -11,7 +11,7 @@ import iconClose from '../../assets/icon-close.svg';
 import Title from '../Title';
 import { savingSource } from '../../useData';
 
-const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setShowSaveModal: (show: boolean)=>void, setShowMenu: (show: boolean) => void, showMenu:boolean, filename:string, savingSource?:savingSource, updateLocalStorage: () => void}> = ({setShowDeleteModal, setShowSaveModal, setShowMenu, showMenu, filename, savingSource, updateLocalStorage}) => {
+const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setShowSaveModal: (show: boolean)=>void, setShowMenu: (show: boolean) => void, showMenu:boolean, filename:string, savingSource?:savingSource, updateLocalStorage: () => void, noDoc: boolean}> = ({setShowDeleteModal, setShowSaveModal, setShowMenu, showMenu, filename, savingSource, updateLocalStorage, noDoc}) => {
 
     return (
         <div className={styles.panel}>
@@ -46,7 +46,10 @@ const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setSho
                 <h2><span>{filename}</span></h2>
             </div>
             <button className={styles.recycleBin}
-                onClick={() => setShowDeleteModal(true)}            >
+                onClick={() => {
+                    if(noDoc) return;
+                    setShowDeleteModal(true);            
+                }}            >
                 <Image 
                     src={iconDelete}
                     alt="Delete Icon"
@@ -54,6 +57,8 @@ const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setSho
             </button>
             <button className={styles.save}
                 onClick={() => {
+                    if(noDoc) return;
+
                     if(savingSource === 'LOCAL'){
                         updateLocalStorage();
                     } 
