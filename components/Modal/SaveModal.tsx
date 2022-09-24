@@ -31,7 +31,12 @@ const SaveModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boole
                             onClick={(e) => {
                                 e.preventDefault();
         
-                                saveToLocalStorage(curID, filename);
+                                let fnToSave = filename.indexOf('.md') !== -1? filename : filename + '.md';
+
+                                saveToLocalStorage(curID, fnToSave);
+
+                                setFilename('');
+
                                 setShowModal(false);
                             }}
                         >
