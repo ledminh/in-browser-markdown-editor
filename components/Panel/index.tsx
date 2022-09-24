@@ -19,8 +19,6 @@ const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setSho
                 onClick={(e) => {
                     e.stopPropagation();
                     setShowMenu(!showMenu);
-
-
                 }}
             >
                 {
