@@ -9,6 +9,7 @@ import favicon from '../assets/favicon-32x32.png';
 import SideMenu from '../components/SideMenu';
 import Panel from '../components/Panel';
 
+import addShortcuts from '../utils/addShortcuts';
 
 import MainSection, { SectionType } from '../layouts/MainSection';
 
@@ -36,11 +37,16 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
 
   useEffect(() => {
     const hideMenu = () => setShowMenu(false);
+    const shortCutsHandle = (e:KeyboardEvent) => addShortcuts(e, createNewDoc);
 
     document.addEventListener('click', hideMenu);
 
+
+    document.addEventListener('keydown', shortCutsHandle);
+
     return () => {
       document.removeEventListener('click', hideMenu);
+      document.removeEventListener('keydown', shortCutsHandle);
     }
   }, []);
 

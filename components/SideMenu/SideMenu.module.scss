@@ -5,7 +5,7 @@
 .myDocument {
     color: base.$color6;
 
-
+    
 }
 
 .newDocumentButton {
@@ -16,7 +16,7 @@
 
 @media (min-width: 1200px) {
     .myDocument {
-        height: 56px;
+        min-height: 56px;
         
         display: flex;
         align-items: center;
