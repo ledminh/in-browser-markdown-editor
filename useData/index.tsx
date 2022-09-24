@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 import { v4 as uuidv4 } from 'uuid';
 
-
+import * as LocalStorage from './localStorage';
 
 export type savingSource = 'LOCAL' | 'SERVER' | 'NONE';
 
@@ -21,31 +21,24 @@ export type DocType = {
 
 export type DocsListType = { createdAt: string; name: string; id: string; current: boolean; }[];
 
-let newFileCount = 0;
 
-const loadDocsFromLocalStorage = (propDocs:DocType[]) => {
-    let currentDocs  = propDocs;
 
-    const localDataStr = localStorage.getItem('markDownData');
+const loadDocsFromLocalStorage = (propDocs: DocType[]) => {
+    const localDocs = LocalStorage.getDocs();
 
-    // First time --> store propDocs to localStorage
-    if(localDataStr === null) {
-        localStorage.setItem('markDownData', JSON.stringify(propDocs.map(d => ({...d, current: false, savedAt: 'LOCAL'}))));
-        
-    }
-    else { // not first time --> get data from localStorage
-        const localData = JSON.parse(localDataStr);
+    if(localDocs === null) 
+        LocalStorage.setDocs(propDocs);
 
-        currentDocs = [...localData
-                            .map((d:DocType, i:number) => 
-                                    ({...d, 
-                                        current: i === 0
-                                    }))];
+    return localDocs === null? propDocs : [
+        ...localDocs.map((d:DocType,i:number) => ({
+            ...d,
+            current: i === 0
+        }))
+    ]
 
-    }
-
-    return currentDocs;
+    
 }
+
 
 /************************
  * useData
@@ -64,10 +57,10 @@ const useData  = (propDocs: DocType[]) => {
     const [docs, setDocs] = useState<DocType[]>([initDoc]);
     
 
-    //Get data from localStorage (or store data to localStorage if this is the first time)
     useEffect(() => {
-        let currentDocs  = loadDocsFromLocalStorage(propDocs);
-        setDocs(currentDocs);
+        let docsToLoad = loadDocsFromLocalStorage(propDocs);
+        
+        setDocs(docsToLoad);
         
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -111,18 +104,22 @@ const useData  = (propDocs: DocType[]) => {
             current: false
         }));
 
+        
+
 
         const newDoc:DocType = {
             createdAt: new Date().toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"}),
-            name: 'new-file' + (newFileCount === 0? '' : '-' + newFileCount) + '.md',
+            name: 'new-file.md' ,
             content: '',
             id: 'md-' + uuidv4(),
             current: true,
             savedAt: 'NONE'
         }
 
+
         newDocs = [newDoc, ...newDocs];
         
+
         setDocs(newDocs);
     }
 
