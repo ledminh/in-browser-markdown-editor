@@ -9,8 +9,9 @@ import iconDelete from '../../assets/icon-delete.svg';
 import iconSave from '../../assets/icon-save.svg';
 import iconClose from '../../assets/icon-close.svg';
 import Title from '../Title';
+import { savingSource } from '../../useData';
 
-const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setShowSaveModal: (show: boolean)=>void, setMenuOut: (out: boolean) => void, menuOut:boolean, filename:string}> = ({setShowDeleteModal, setShowSaveModal, setMenuOut, menuOut, filename}) => {
+const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setShowSaveModal: (show: boolean)=>void, setMenuOut: (out: boolean) => void, menuOut:boolean, filename:string, savingSource?:savingSource, updateLocalStorage: () => void}> = ({setShowDeleteModal, setShowSaveModal, setMenuOut, menuOut, filename, savingSource, updateLocalStorage}) => {
 
     return (
         <div className={styles.panel}>
@@ -47,7 +48,13 @@ const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setSho
                 />
             </button>
             <button className={styles.save}
-                onClick={() => setShowSaveModal(true)}
+                onClick={() => {
+                    if(savingSource === 'LOCAL'){
+                        updateLocalStorage();
+                    } 
+
+                    setShowSaveModal(true);
+                }}
             >
                 <Image
                     src={iconSave}
