@@ -175,7 +175,7 @@ const useData  = (propDocs: DocType[]) => {
                 newDocs = newDocs.filter((d,i) => i < newDocs.length - newLSData.length && d.id !== id);
 
                 
-                newDocs = [...newDocs,...newLSData];
+                newDocs = [...newDocs,...newLSData].map(d => ({...d, current: d.id === docToSave.id}));
                 setDocs(newDocs);
             }
         
