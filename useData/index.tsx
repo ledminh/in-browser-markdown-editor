@@ -221,7 +221,7 @@ const useData  = (propDocs: DocType[]) => {
 
 
     
-    
+    const isEmpty = () => docs.length === 0;
     
     
     
@@ -230,7 +230,7 @@ const useData  = (propDocs: DocType[]) => {
         
         
         return {
-            getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, updateLocalStorage, getDocsList, deleteCurDoc
+            getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, updateLocalStorage, getDocsList, deleteCurDoc, isEmpty
         }
 
 

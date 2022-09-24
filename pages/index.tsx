@@ -17,6 +17,8 @@ import Preview from '../components/Preview';
 import DeleteModal from '../components/Modal/DeleteModal';
 import SaveModal from '../components/Modal/SaveModal';
 
+import EmptyScreen from '../components/EmptyScreen';
+
 import { DocType } from '../useData';
 
 const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
@@ -34,7 +36,7 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
 
   //Data states
   const {
-    getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, getDocsList, deleteCurDoc, updateLocalStorage
+    getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, getDocsList, deleteCurDoc, updateLocalStorage, isEmpty
   } = useData(initDocs);
 
   const docsList = getDocsList();
@@ -67,25 +69,32 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
                   updateLocalStorage={updateLocalStorage}
                   savingSource={curDoc?.savedAt}
             />
-          <MainSection
-              section="EDITOR"
-              curSection={curSection}
-              setCurSection={setCurSection}
-            >
-            <TextArea docContent={curDoc? curDoc.content: ''}
-                      setContent={setCurDocContent}
-                      
-                  />
-          </MainSection>
-          <MainSection
-              section="PREVIEW"
-              curSection={curSection}
-              setCurSection={setCurSection}
-            >
-            <Preview docContent={curDoc? curDoc.content: ''}
-                previewRef={previewRef}
-              />
-          </MainSection>          
+            {
+              isEmpty()? 
+                <EmptyScreen />
+                :
+                <>
+                  <MainSection
+                      section="EDITOR"
+                      curSection={curSection}
+                      setCurSection={setCurSection}
+                    >
+                    <TextArea docContent={curDoc? curDoc.content: ''}
+                              setContent={setCurDocContent}
+                              
+                          />
+                  </MainSection>
+                  <MainSection
+                      section="PREVIEW"
+                      curSection={curSection}
+                      setCurSection={setCurSection}
+                    >
+                    <Preview docContent={curDoc? curDoc.content: ''}
+                        previewRef={previewRef}
+                      />
+                  </MainSection>          
+                </>
+            }
         </main>
         <DeleteModal
           showModal={showDeleteModal}
