@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 import * as LocalStorage from './localStorage';
 
+import getCounter from './counter';
+
 export type savingSource = 'LOCAL' | 'SERVER' | 'NONE';
 
 export type DocType = {
@@ -40,6 +42,19 @@ const loadDocsFromLocalStorage = (propDocs: DocType[]) => {
 }
 
 
+const markRemovedOnCounter = (filename:string, markRemove:(i:number)=>void) => {
+    const testNum = /new-file-(\d+)/;
+    const numArr = filename.match(testNum);
+
+    if(numArr) {
+        const iNewFile = Number(numArr[1]);
+        markRemove(iNewFile);
+    }
+    else {
+        markRemove(0);
+    }
+}
+
 /************************
  * useData
  */
@@ -56,6 +71,7 @@ const initDoc:DocType =  {
 const useData  = (propDocs: DocType[]) => {
     const [docs, setDocs] = useState<DocType[]>([initDoc]);
     
+    const Counter = useRef(getCounter());
 
     useEffect(() => {
         let docsToLoad = loadDocsFromLocalStorage(propDocs);
@@ -66,6 +82,7 @@ const useData  = (propDocs: DocType[]) => {
     }, []);
 
 
+    
 
     /**********************************************/
 
@@ -105,11 +122,11 @@ const useData  = (propDocs: DocType[]) => {
         }));
 
         
-
+        const index = Counter.current.getIndex();
 
         const newDoc:DocType = {
             createdAt: new Date().toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"}),
-            name: 'new-file.md' ,
+            name: 'new-file'  + (index === null? '' : '-' + index) +'.md' ,
             content: '',
             id: 'md-' + uuidv4(),
             current: true,
@@ -131,15 +148,23 @@ const useData  = (propDocs: DocType[]) => {
         const newDocs = docs.filter((d, i) => {
             if(d.current) {
                 curI = i;
+
+                //if file is new-file, markRemoved on counter.
+                if(d.name.indexOf('new-file') !== -1) {
+                    markRemovedOnCounter(d.name, Counter.current.markRemove);
+                }
             }
 
             return d.current === false;
         });
 
+        // if curI === 0, keep it that way.
+        // if curI === -1, there is no current doc, which means no doc --> no op.
         if(curI > 0) {
             curI = curI - 1;
         }
 
+        // no doc --> no op
         if(newDocs.length > 0)
             newDocs[curI].current = true;
 
@@ -156,6 +181,10 @@ const useData  = (propDocs: DocType[]) => {
         const docToSave = newDocs.find(d => d.id === id);
         
         if(docToSave){
+            if(docToSave.name.indexOf('new-file') !== -1) {
+                markRemovedOnCounter(docToSave.name, Counter.current.markRemove);
+            }
+            
             docToSave.name = filename;
             docToSave.current = false;
             docToSave.savedAt = 'LOCAL';
