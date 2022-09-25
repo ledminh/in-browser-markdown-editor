@@ -145,13 +145,12 @@ const useData  = (propDocs: DocType[]) => {
 
         setDocs(newDocs);
         
+        LocalStorage.setDocs(newDocs.filter(d => d.savedAt === 'LOCAL'));
 
-        localStorage.setItem('markDownData', JSON.stringify(newDocs.filter(d => d.savedAt === 'LOCAL')));
     }
     
     //Save doc to localStorage
     const saveToLocalStorage = (id:string, filename:string) => {
-        const localDataStr = localStorage.getItem('markDownData');
         let newDocs = docs.slice();
 
         const docToSave = newDocs.find(d => d.id === id);
@@ -161,20 +160,16 @@ const useData  = (propDocs: DocType[]) => {
             docToSave.current = false;
             docToSave.savedAt = 'LOCAL';
             
-            if(localDataStr !== null) {
-                const lSData = JSON.parse(localDataStr);
+            LocalStorage.addDoc(docToSave);
+            const lsDocs  = LocalStorage.getDocs();
                 
+            newDocs = newDocs.filter((d,i) => i < newDocs.length - lsDocs.length && d.id !== id);
 
-                const newLSData = [docToSave, ...lSData];
-                localStorage.setItem('markDownData', JSON.stringify(newLSData));
-                
-                
-                newDocs = newDocs.filter((d,i) => i < newDocs.length - newLSData.length && d.id !== id);
+            
+            newDocs = [...newDocs,...lsDocs].map(d => ({...d, current: d.id === docToSave.id}));
 
-                
-                newDocs = [...newDocs,...newLSData].map(d => ({...d, current: d.id === docToSave.id}));
-                setDocs(newDocs);
-            }
+            setDocs(newDocs);
+            
         
         }
     
@@ -182,28 +177,13 @@ const useData  = (propDocs: DocType[]) => {
     }    
 
 
-    const updateLocalStorage = () => {
-        const localDataStr = localStorage.getItem('markDownData');
+    const updateDocInLocalStorage = () => {
 
-        if(localDataStr) {
-            const lSData = JSON.parse(localDataStr);
-            const docToSaveClient = getCurrentDoc();
+        const currentDoc = getCurrentDoc();
 
-            if(docToSaveClient) {
-                const docToSaveLS = lSData.find((d:DocType) => d.id === docToSaveClient.id);
-
-                if(docToSaveLS) {
-                    docToSaveLS.content = docToSaveClient.content;
-                    
-                    localStorage.setItem('markDownData', JSON.stringify(lSData));
-                
-                }
-            }
-            
-        }   
-
-
-
+        if(currentDoc)
+            LocalStorage.updateDoc(currentDoc);
+        
     }
 
 
@@ -227,7 +207,7 @@ const useData  = (propDocs: DocType[]) => {
         
         
         return {
-            getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, updateLocalStorage, getDocsList, deleteCurDoc, isEmpty
+            getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, updateDocInLocalStorage, getDocsList, deleteCurDoc, isEmpty
         }
 
 

@@ -11,7 +11,7 @@ import iconClose from '../../assets/icon-close.svg';
 import Title from '../Title';
 import { savingSource } from '../../useData';
 
-const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setShowSaveModal: (show: boolean)=>void, setShowMenu: (show: boolean) => void, showMenu:boolean, filename:string, savingSource?:savingSource, updateLocalStorage: () => void, noDoc: boolean}> = ({setShowDeleteModal, setShowSaveModal, setShowMenu, showMenu, filename, savingSource, updateLocalStorage, noDoc}) => {
+const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setShowSaveModal: (show: boolean)=>void, setShowMenu: (show: boolean) => void, showMenu:boolean, filename:string, savingSource?:savingSource, updateDocInLocalStorage: () => void, noDoc: boolean}> = ({setShowDeleteModal, setShowSaveModal, setShowMenu, showMenu, filename, savingSource, updateDocInLocalStorage, noDoc}) => {
 
     return (
         <div className={styles.panel}>
@@ -58,7 +58,7 @@ const Panel:FunctionComponent<{setShowDeleteModal: (show: boolean)=>void, setSho
                     if(noDoc) return;
 
                     if(savingSource === 'LOCAL'){
-                        updateLocalStorage();
+                        updateDocInLocalStorage();
                     } 
 
                     setShowSaveModal(true);

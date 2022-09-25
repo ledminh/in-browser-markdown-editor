@@ -53,7 +53,7 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
 
   //Data states
   const {
-    getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, getDocsList, deleteCurDoc, updateLocalStorage, isEmpty
+    getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, getDocsList, deleteCurDoc, updateDocInLocalStorage, isEmpty
   } = useData(initDocs);
 
   const docsList = getDocsList();
@@ -85,7 +85,7 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
                   setShowMenu={setShowMenu}
                   showMenu={showMenu}
                   filename={curDoc? curDoc.name : ''}
-                  updateLocalStorage={updateLocalStorage}
+                  updateDocInLocalStorage={updateDocInLocalStorage}
                   savingSource={curDoc?.savedAt}
                   noDoc={isEmpty()}
             />
