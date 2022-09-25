@@ -48,6 +48,7 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
       document.removeEventListener('click', hideMenu);
       document.removeEventListener('keydown', shortCutsHandle);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
