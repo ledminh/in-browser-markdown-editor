@@ -1,4 +1,4 @@
-const addShortcuts = (e:KeyboardEvent, createNewDoc:() => void, deleteCurDoc: () => void, setShowSaveModal: (show: boolean) => void, isEmpty: () => boolean) => {
+const addShortcuts = (e:KeyboardEvent, createNewDoc:() => void, deleteCurDoc: () => void, setShowSaveModal: (show: boolean) => void, isEmpty: () => boolean, setNext: () => void, setPrev: () => void, showMenu: boolean) => {
     
     if(e.ctrlKey && e.shiftKey) {
         e.preventDefault();
@@ -12,6 +12,16 @@ const addShortcuts = (e:KeyboardEvent, createNewDoc:() => void, deleteCurDoc: ()
             setShowSaveModal(true);
         }
     }
+    else if(showMenu) {
+        e.preventDefault();
+        if(e.key === 'ArrowUp'){
+            setPrev();
+        }
+        else if(e.key === 'ArrowDown') {
+            setNext();
+        }
+    }
+    
 
 
 }

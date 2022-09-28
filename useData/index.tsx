@@ -89,6 +89,32 @@ const useData  = (propDocs: DocType[]) => {
 
     const getCurrentDoc = () => docs.find((doc) => doc.current);
 
+    const setNext = () => {
+        const curI = docs.findIndex(d => d.current);
+
+        if(curI  < docs.length - 1) {
+            const newDocs = docs.map((d, i) => ({
+                ...d,
+                current: i === curI + 1
+            }));
+
+            setDocs(newDocs);
+        }
+    }
+
+    const setPrev = () => {
+        const curI = docs.findIndex(d => d.current);
+
+        if(curI  > 0) {
+            const newDocs = docs.map((d, i) => ({
+                ...d,
+                current: i === curI - 1
+            }));
+
+            setDocs(newDocs);
+        }
+    }
+
     const setDocCurrent = (id:string) => {
         const newDocs = docs.map((d) => ({
             ...d,
@@ -237,7 +263,7 @@ const useData  = (propDocs: DocType[]) => {
         
         
         return {
-            getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, updateDocInLocalStorage, getDocsList, deleteCurDoc, isEmpty
+            getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, updateDocInLocalStorage, getDocsList, deleteCurDoc, isEmpty, setNext, setPrev
         }
 
 

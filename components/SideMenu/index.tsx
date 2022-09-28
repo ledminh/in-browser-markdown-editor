@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react"
+import { FunctionComponent, useEffect } from "react"
 
 import styles from './SideMenu.module.scss';
 import FileTab, {FileTabsWrapper} from "./FileTab";
@@ -8,6 +8,7 @@ import Title from "../Title";
 import { DocsListType } from "../../useData";
 
 const SideMenu:FunctionComponent<{light: boolean, setLightMode: (light:boolean) => void, docsList: DocsListType, setDocCurrent: (id: string) => void, createNewDoc: () => void}> = ({light, setLightMode, docsList, setDocCurrent, createNewDoc}) => {
+    
 
     return (
         <>
