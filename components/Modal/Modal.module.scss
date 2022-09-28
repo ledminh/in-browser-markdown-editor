@@ -1,11 +1,23 @@
 @use '../../styles/base';
 
+@keyframes overLayFadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 .modalOverlay {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
+
+    animation: overLayFadeIn .3s;
 
     &::before {
         content: "";
@@ -29,6 +41,17 @@
 
 }
 
+@keyframes fadeInModal {
+    0% {
+        transform: scale(.7);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
 .modal {
     font-family: 'Roboto Slab', serif;
 
@@ -39,6 +62,7 @@
     border-radius: 4px;
     background-color: base.$color10;
 
+    animation: fadeInModal .3s;
     opacity: 1;
 
     z-index: 1;
