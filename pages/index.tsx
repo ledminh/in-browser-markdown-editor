@@ -34,10 +34,16 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
   const [lightMode, setLightMode] = useState<boolean>(true);
   const [showMenu, setShowMenu] = useState<boolean>(false);
 
+  //Data states
+  const {
+    getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, getDocsList, deleteCurDoc, updateDocInLocalStorage, isEmpty
+  } = useData(initDocs);
+
+
 
   useEffect(() => {
     const hideMenu = () => setShowMenu(false);
-    const shortCutsHandle = (e:KeyboardEvent) => addShortcuts(e, createNewDoc);
+    const shortCutsHandle = (e:KeyboardEvent) => addShortcuts(e, createNewDoc, deleteCurDoc, setShowSaveModal, isEmpty);
 
     document.addEventListener('click', hideMenu);
 
@@ -49,13 +55,9 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
       document.removeEventListener('keydown', shortCutsHandle);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [createNewDoc, deleteCurDoc, setShowSaveModal, saveToLocalStorage, isEmpty]);
 
 
-  //Data states
-  const {
-    getCurrentDoc, setDocCurrent, setCurDocContent, createNewDoc, saveToLocalStorage, getDocsList, deleteCurDoc, updateDocInLocalStorage, isEmpty
-  } = useData(initDocs);
 
   const docsList = getDocsList();
   const curDoc = getCurrentDoc();

@@ -116,6 +116,7 @@ const useData  = (propDocs: DocType[]) => {
     }
 
     const createNewDoc = () => {
+
         let newDocs = docs.map((d) => ({
             ...d,
             current: false
@@ -136,7 +137,7 @@ const useData  = (propDocs: DocType[]) => {
 
         newDocs = [newDoc, ...newDocs];
         
-
+        
         setDocs(newDocs);
     }
 
@@ -184,7 +185,7 @@ const useData  = (propDocs: DocType[]) => {
             if(docToSave.name.indexOf('new-file') !== -1) {
                 markRemovedOnCounter(docToSave.name, Counter.current.markRemove);
             }
-            
+
             docToSave.name = filename;
             docToSave.current = false;
             docToSave.savedAt = 'LOCAL';
