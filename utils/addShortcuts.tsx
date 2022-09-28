@@ -13,11 +13,14 @@ const addShortcuts = (e:KeyboardEvent, createNewDoc:() => void, deleteCurDoc: ()
         }
     }
     else if(showMenu) {
-        e.preventDefault();
         if(e.key === 'ArrowUp'){
+            e.preventDefault();
+
             setPrev();
         }
         else if(e.key === 'ArrowDown') {
+            e.preventDefault();
+
             setNext();
         }
     }

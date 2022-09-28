@@ -88,7 +88,6 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
                   setShowMenu={setShowMenu}
                   showMenu={showMenu}
                   filename={curDoc? curDoc.name : ''}
-                  updateDocInLocalStorage={updateDocInLocalStorage}
                   savingSource={curDoc?.savedAt}
                   noDoc={isEmpty()}
             />
@@ -130,6 +129,7 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
           curID={curDoc? curDoc.id: ''}
           saveToLocalStorage={saveToLocalStorage}
           savingSource={curDoc?.savedAt}
+          updateDocInLocalStorage={updateDocInLocalStorage}
         />
         <div className="modal-root"></div>
       </div>

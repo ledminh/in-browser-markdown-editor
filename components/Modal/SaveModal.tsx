@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { useState } from "react";
 import { savingSource } from "../../useData";
 
@@ -7,13 +7,25 @@ import Modal from "./Modal";
 import styles from './SaveModal.module.scss';
 
 
-const SaveModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boolean) => void, saveToLocalStorage: (id:string, filename:string) => void, curID:string, savingSource?:savingSource }> = ({showModal, setShowModal, saveToLocalStorage, curID, savingSource}) => {
+const SaveModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boolean) => void, saveToLocalStorage: (id:string, filename:string) => void, curID:string, savingSource?:savingSource, updateDocInLocalStorage: () => void }> = ({showModal, setShowModal, saveToLocalStorage, curID, savingSource, updateDocInLocalStorage}) => {
     const [filename, setFilename] = useState("");
+
+
+    useEffect(() => {
+        if(savingSource === 'LOCAL') {
+            updateDocInLocalStorage();
+            setTimeout(() => {
+                setShowModal(false);
+            }, 1000);
+        }
+    }, [showModal, savingSource, setShowModal, updateDocInLocalStorage]);
+
 
     return (
         <Modal onClose={() => setShowModal(false)}
                 show={showModal}
                 title={savingSource === 'NONE'? "Save this document?" : 'Document saved'}
+                
         >
             {
                 savingSource === 'LOCAL'?
