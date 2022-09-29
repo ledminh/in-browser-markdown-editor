@@ -125,6 +125,7 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
           showModal={showDeleteModal}
           setShowModal={setShowDeleteModal}
           deleteCurDoc={deleteCurDoc}
+          filename={curDoc?.name}
         />
         <SaveModal 
           showModal={showSaveModal}

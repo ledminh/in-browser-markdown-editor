@@ -5,7 +5,7 @@ import Modal from "./Modal";
 import styles from './DeleteModal.module.scss';
 
 
-const DeleteModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boolean) => void, deleteCurDoc: ()=> void}> = ({showModal, setShowModal, deleteCurDoc}) => {
+const DeleteModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boolean) => void, deleteCurDoc: ()=> void, filename:string|undefined}> = ({showModal, setShowModal, deleteCurDoc, filename}) => {
 
 
     return (
@@ -13,7 +13,7 @@ const DeleteModal:FunctionComponent<{showModal: boolean, setShowModal: (show:boo
                 show={showModal}
                 title={"Delete this document?"}
         >
-            <p>Are you sure you want to delete the &apos;welcome.md&apos; document and its contents?</p>
+            <p>Are you sure you want to delete the &apos;{filename && filename}&apos; document and its contents?</p>
             <p>This action cannot be reversed.</p>
             <button className={styles.button}
                 onClick= {(e) => {
