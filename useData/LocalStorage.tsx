@@ -1,6 +1,6 @@
 import { DocType } from ".";
 
-export const getDocs = () => {
+const getDocs = () => {
     const docStr = localStorage.getItem('markDownData');
 
     if(docStr !== null) {
@@ -11,7 +11,7 @@ export const getDocs = () => {
     }
 }
 
-export const setDocs = (docs: DocType[]) => {
+const setDocs = (docs: DocType[]) => {
     localStorage.setItem('markDownData', JSON.stringify(docs.map(d => ({...d, current:false, savedAt:'LOCAL'}))));
 }
 
@@ -24,7 +24,7 @@ export const addDoc = (doc:DocType) => {
 
 }
 
-export const updateDoc = (doc:DocType) => {
+const updateDoc = (doc:DocType) => {
     const localDocs = getDocs();
 
     if(localDocs !== null) {
@@ -39,3 +39,16 @@ export const updateDoc = (doc:DocType) => {
     }   
 
 }
+
+const LocalStorage = {
+    getDocs,
+    setDocs,
+    addDoc,
+    updateDoc
+    
+    
+    
+       
+}
+
+export default LocalStorage;

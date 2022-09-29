@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 import { v4 as uuidv4 } from 'uuid';
 
-import * as LocalStorage from './localStorage';
+import LocalStorage from "./localStorage";
 
 import getCounter from './counter';
 
