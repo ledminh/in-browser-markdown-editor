@@ -21,6 +21,7 @@ import SaveModal from '../components/Modal/SaveModal';
 import EmptyScreen from '../components/EmptyScreen';
 
 import { DocType } from '../useData';
+import ShortcutModal from '../components/Modal/ShortcutModal';
 
 const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
   const previewRef = useRef<HTMLDivElement>(null);
@@ -28,11 +29,13 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
   // UI states
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showSaveModal, setShowSaveModal] = useState(false);
+  const [showShortcutModal, setShowShortcutModal] = useState(false);
 
   const [curSection, setCurSection] = useState<SectionType>('EDITOR');
 
   const [lightMode, setLightMode] = useState<boolean>(true);
   const [showMenu, setShowMenu] = useState<boolean>(false);
+
 
   //Data states
   const {
@@ -43,7 +46,7 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
 
   useEffect(() => {
     const hideMenu = () => setShowMenu(false);
-    const shortCutsHandle = (e:KeyboardEvent) => addShortcuts(e, createNewDoc, deleteCurDoc, setShowSaveModal, isEmpty, setNext, setPrev, showMenu);
+    const shortCutsHandle = (e:KeyboardEvent) => addShortcuts(e, createNewDoc, deleteCurDoc, setShowSaveModal, isEmpty, setNext, setPrev, showMenu, setShowShortcutModal);
 
     document.addEventListener('click', hideMenu);
 
@@ -131,6 +134,11 @@ const Home: NextPage<{initDocs: DocType[]}> = ({initDocs}) => {
           savingSource={curDoc?.savedAt}
           updateDocInLocalStorage={updateDocInLocalStorage}
         />
+        <ShortcutModal 
+          showModal={showShortcutModal}
+          setShowModal={setShowShortcutModal}
+        />
+
         <div className="modal-root"></div>
       </div>
     </>

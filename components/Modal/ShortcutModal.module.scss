@@ -1,0 +1,28 @@
+@use '../../styles/base';
+
+.ul {
+    list-style: none;
+}
+
+.li {
+    margin-bottom: 1rem;
+
+}
+
+
+.key {
+    display: inline-block;
+
+    background-color: base.$color1;
+    color: base.$color7;
+    margin-right: .2rem;
+    padding: .3rem;
+
+    border-radius: 4px;
+}
+
+.explanation {
+    margin-left: 1rem;
+
+    font-size: .9rem;
+}
