@@ -16,8 +16,6 @@ This is a solution to the [In-browser markdown editor challenge on Frontend Ment
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -30,12 +28,11 @@ Users should be able to:
 - View a full-page preview of the formatted content
 - View the optimal layout for the app depending on their device's screen size
 - See hover states for all interactive elements on the page
-- **Bonus**: If you're building a purely front-end project, use localStorage to save the current state in the browser that persists when the browser is refreshed
-- **Bonus**: Build this project as a full-stack application
+- Use localStorage to save the current state in the browser that persists when the browser is refreshed
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![screenshot](./screenshot.png)
 
 Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
