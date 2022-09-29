@@ -54,15 +54,18 @@ Users should be able to:
 
 ### What I learned
 
-A small trick I learned while building this app:
-
 #### Make textarea grow with text
+
+This is a small trick I learned while building this app:
 
 After two days of doing research, I figured the best way to achieve it is using javascript. 
 - Set its height to an empty string (don’t set it to 0px like many suggestions you might find on stackoverflow). If you don’t do this step, textarea’s height will grow each time you enter something. 
 - Then set its height to scrollHeight + some margin.
 - Then set its parent element’s overflow-y to hidden.
 
+The last two steps solve the problem of scrollbar flickering each time user enter something that will overflow the old height value.
+
+Here is my code from [components/TextArea/index.tsx](./components/TextArea/index.tsx)
 
 ```ts
   onChange={(e) => {                
@@ -77,10 +80,18 @@ After two days of doing research, I figured the best way to achieve it is using 
                     }}
 ```
 
+#### Naming new files
+In Windows (or in any OS nowadays), right after you click a button to create a new file and before you give it a name, it will be given some name like “new-file”, or ‘new-document’. If ‘new-file’ is already taken, the name will probably be ‘new-file-1’. If ‘new-file-1’ is already taken, ‘new-file-2’ will be chosen. 
+
+I decided to add this feature to my app, with some modifications. Specifically, when you have a list of new files, from new-file, new-file-1, to new-file-n, if you delete one of them, new-file-5 for example, the next new file should be named ‘new-file-5’, and the one next to it will be ‘new-file-(n+1)’. 
+
+To do that, I created a counter with getIndex method. When calling, the method will return an appropriate number to add to the end of the new file’s name.
+
+The implementation is in [useData/counter.tsx](./useData/counter.tsx)
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+If I have time to improve this app (and I will), I will make it become a full-stack app by adding login feature. Logged in users can save documents in database.
 
 **Note: Delete this note and the content within this section and replace with your own plans for continued development.**
 
